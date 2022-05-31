@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="POCKETPAL.Views.AboutPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:MODELS="clr-namespace:POCKETPAL.Models"
+    Title="{Binding Title}"
+    BackgroundColor="{StaticResource AppBackgroundColor}"
+    NavigationPage.HasNavigationBar="True"
+    Shell.NavBarIsVisible="True"
+    Shell.FlyoutBehavior="Disabled"
+    mc:Ignorable="d">
+
+    <StackLayout BackgroundColor="#FFFFFF">
+        <Image
+            Margin="10,10,10,0"
+            Source="ic_icon"
+            WidthRequest="250" />
+        <ScrollView>
+            <StackLayout Padding="12,0,12,12" Spacing="6">
+                <Label
+                    Margin="0,6,0,0"
+                    FontAttributes="Bold"
+                    Text="App Info:"
+                    TextColor="#000000" />
+                <Label x:Name="lblName"    TextColor="#000000" />
+                <Label x:Name="lblPackage" TextColor="#000000" />
+                <Label
+                    Margin="0,6,0,0"
+                    FontAttributes="Bold"
+                    Text="Version Info:"
+                    TextColor="#000000" />
+                <Label x:Name="lblAppVersion" TextColor="#000000" />
+                <Label x:Name="lblAppBuild"   TextColor="#000000" />
+                <Label
+                    Margin="0,6,0,0"
+                    FontAttributes="Bold"
+                    Text="Token:"
+                    TextColor="#000000" />
+                <Editor
+                    x:Name="TokenDevice"
+                    TextColor="#000000"
+                    Keyboard="Text"/>
+                <Button
+                    Margin="0,10,0,0"
+                    Clicked="CopyToken"
+                    Style="{StaticResource DefaultButton}"
+                    Text="Copy Token" />
+                <Button
+                    Margin="0,10,0,0"
+                    Clicked="OpenSetting"
+                    Style="{StaticResource DefaultButton}"
+                    Command="{Binding ShowSettingsUICommand}"
+                    Text="Open Settings" />
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+
+</ContentPage>

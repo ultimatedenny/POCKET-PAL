@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="POCKETPAL.Views.RegisterPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Classes="clr-namespace:POCKETPAL.Classes"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    ios:Page.UseSafeArea="False"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="True"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <Grid>
+            <Image
+                Aspect="AspectFill"
+                Source="IMG_BACKGROUOND"
+                VerticalOptions="FillAndExpand" />
+
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Frame
+                    Grid.Row="0"
+                    Margin="0"
+                    BackgroundColor="Transparent"
+                    CornerRadius="0"
+                    HasShadow="False"
+                    VerticalOptions="Start">
+                    <StackLayout Margin="0" BackgroundColor="Transparent">
+                        <StackLayout
+                            Margin="0,0,0,0"
+                            Orientation="Horizontal"
+                            VerticalOptions="Center">
+                            <Image
+                                x:Name="headerimg"
+                                HeightRequest="35"
+                                HorizontalOptions="Start"
+                                Source="IMG_ICON"
+                                WidthRequest="35" />
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            FontAttributes="Bold"
+                                            FontSize="15"
+                                            Text="POCKET"
+                                            TextColor="Black" />
+                                        <Span
+                                            FontAttributes="Bold"
+                                            FontSize="15"
+                                            Text="PAL"
+                                            TextColor="#ed1c24" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                        <Label
+                            Margin="0,0,0,0"
+                            FontAttributes="Bold"
+                            FontSize="40"
+                            Text="Register"
+                            TextColor="#2d6ab5" />
+                        <Label
+                            Margin="0,0,0,0"
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            Text="This is fast and easy"
+                            TextColor="#403E45" />
+                    </StackLayout>
+                </Frame>
+
+                <yummy:PancakeView
+                    Grid.Row="1"
+                    Margin="0,0,0,0"
+                    Padding="20,0,20,20"
+                    BackgroundColor="Transparent"
+                    CornerRadius="15,15,0,0"
+                    VerticalOptions="FillAndExpand">
+                    <ScrollView>
+                        <Grid>
+                            <StackLayout BackgroundColor="Transparent" Spacing="10">
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Switch
+                                        x:Name="swtichSignupType"
+                                        HorizontalOptions="Start"
+                                        IsToggled="False"
+                                        OnColor="LightGray"
+                                        ThumbColor="DodgerBlue"
+                                        Toggled="siguptype" />
+                                    <Label
+                                        x:Name="txtSignUpType"
+                                        FontSize="Default"
+                                        Text="Normal Account"
+                                        TextColor="Black"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+
+                                <Label
+                                    FontAttributes="Italic"
+                                    TextColor="Black"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="*if you don't have " />
+                                            <Span
+                                                Text="Shimano Windows Account"
+                                                TextColor="Black"
+                                                TextDecorations="Underline" />
+                                            <Span Text=", please select normal account instead." />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <StackLayout IsVisible="true" Spacing="10">
+
+                                    <yummy:PancakeView
+                                        Padding="0,0,0,0"
+                                        BackgroundColor="#e3e5e9"
+                                        CornerRadius="5"
+                                        HeightRequest="45">
+                                        <Picker
+                                            x:Name="PickerArea"
+                                            Title="Country"
+                                            BackgroundColor="Transparent"
+                                            FontSize="15"
+                                            SelectedIndexChanged="getPlant"
+                                            TextColor="Black"
+                                            TitleColor="#99A1B3" />
+                                    </yummy:PancakeView>
+
+                                    <yummy:PancakeView
+                                        Padding="0,0,0,0"
+                                        BackgroundColor="#e3e5e9"
+                                        CornerRadius="5"
+                                        HeightRequest="45">
+                                        <Picker
+                                            x:Name="PickerPlant"
+                                            Title="Plant"
+                                            BackgroundColor="Transparent"
+                                            FontSize="15"
+                                            SelectedIndexChanged="getDept"
+                                            TextColor="Black"
+                                            TitleColor="#99A1B3" />
+                                    </yummy:PancakeView>
+
+                                    <yummy:PancakeView
+                                        Padding="0,0,0,0"
+                                        BackgroundColor="#e3e5e9"
+                                        CornerRadius="5"
+                                        HeightRequest="45">
+                                        <Picker
+                                            x:Name="PickerDept"
+                                            Title="Department"
+                                            BackgroundColor="Transparent"
+                                            FontSize="15"
+                                            SelectedIndexChanged="getDept2"
+                                            TextColor="Black"
+                                            TitleColor="#99A1B3" />
+                                    </yummy:PancakeView>
+
+                                    <!--  VENDOR  -->
+
+                                    <Grid x:Name="VendorRegArea" HorizontalOptions="FillAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.5*" />
+                                            <ColumnDefinition Width="0.5*" />
+                                        </Grid.ColumnDefinitions>
+                                        <yummy:PancakeView
+                                            x:Name="vendorCompanyView"
+                                            Grid.Column="0"
+                                            Padding="10,0,0,0"
+                                            BackgroundColor="#e3e5e9"
+                                            CornerRadius="5"
+                                            HeightRequest="45">
+                                            <Classes:BorderlessEntry
+                                                x:Name="vendorCompany"
+                                                ClearButtonVisibility="WhileEditing"
+                                                FontSize="15"
+                                                Keyboard="Text"
+                                                Placeholder="Company Name"
+                                                PlaceholderColor="#99A1B3"
+                                                TextColor="Black" />
+                                        </yummy:PancakeView>
+                                        <yummy:PancakeView
+                                            x:Name="vendorEmpNoView"
+                                            Grid.Column="1"
+                                            Padding="10,0,0,0"
+                                            BackgroundColor="#e3e5e9"
+                                            CornerRadius="5"
+                                            HeightRequest="45">
+                                            <Classes:BorderlessEntry
+                                                x:Name="vendorEmpNo"
+                                                ClearButtonVisibility="WhileEditing"
+                                                FontSize="15"
+                                                Keyboard="Text"
+                                                Placeholder="Employee ID"
+                                                PlaceholderColor="#99A1B3"
+                                                TextColor="Black" />
+                                        </yummy:PancakeView>
+                                    </Grid>
+
+                                    <!--  VENDOR  -->
+                                    <yummy:PancakeView
+                                        Padding="0,0,0,0"
+                                        BackgroundColor="#e3e5e9"
+                                        CornerRadius="5"
+                                        HeightRequest="45">
+                                        <Picker
+                                            x:Name="PickerSaluation"
+                                            Title="Saluation"
+                                            BackgroundColor="Transparent"
+                                            FontSize="15"
+                                            TextColor="Black"
+                                            TitleColor="#99A1B3">
+
+                                            <Picker.Items>
+                                                <x:String>Mr.</x:String>
+                                                <x:String>Mrs.</x:String>
+                                                <x:String>Ms.</x:String>
+                                            </Picker.Items>
+
+                                        </Picker>
+                                    </yummy:PancakeView>
+
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.5*" />
+                                            <ColumnDefinition Width="0.5*" />
+                                        </Grid.ColumnDefinitions>
+                                        <yummy:PancakeView
+                                            x:Name="usernameSignup_view"
+                                            Grid.Column="0"
+                                            Padding="10,0,0,0"
+                                            BackgroundColor="#e3e5e9"
+                                            CornerRadius="5"
+                                            HeightRequest="45">
+                                            <Classes:BorderlessEntry
+                                                x:Name="usernameSignup"
+                                                ClearButtonVisibility="WhileEditing"
+                                                FontSize="15"
+                                                Keyboard="Text"
+                                                Placeholder="Employee Number"
+                                                PlaceholderColor="#99A1B3"
+                                                TextColor="Black" />
+                                        </yummy:PancakeView>
+                                        <yummy:PancakeView
+                                            x:Name="fullnameSignup_view"
+                                            Grid.Column="1"
+                                            Padding="10,0,0,0"
+                                            BackgroundColor="#e3e5e9"
+                                            CornerRadius="5"
+                                            HeightRequest="45">
+                                            <Classes:BorderlessEntry
+                                                x:Name="fullnameSignup"
+                                                ClearButtonVisibility="WhileEditing"
+                                                FontSize="15"
+                                                Keyboard="Text"
+                                                Placeholder="Full Name"
+                                                PlaceholderColor="#99A1B3"
+                                                TextColor="Black"
+                                                TextTransform="Uppercase" />
+                                        </yummy:PancakeView>
+                                    </Grid>
+
+                                    <yummy:PancakeView
+                                        x:Name="emailSignup_view"
+                                        Padding="10,0,0,0"
+                                        BackgroundColor="#e3e5e9"
+                                        CornerRadius="5"
+                                        HeightRequest="45">
+                                        <Classes:BorderlessEntry
+                                            x:Name="emailSignup"
+                                            ClearButtonVisibility="WhileEditing"
+                                            FontSize="15"
+                                            Keyboard="Email"
+                                            Placeholder="Email"
+                                            PlaceholderColor="#99A1B3"
+                                            TextColor="Black" />
+                                    </yummy:PancakeView>
+
+                                    <yummy:PancakeView
+                                        x:Name="phoneSignup_view"
+                                        Padding="10,0,0,0"
+                                        BackgroundColor="#e3e5e9"
+                                        CornerRadius="5"
+                                        HeightRequest="45">
+                                        <Classes:BorderlessEntry
+                                            x:Name="phoneSignup"
+                                            ClearButtonVisibility="WhileEditing"
+                                            FontSize="15"
+                                            Keyboard="Numeric"
+                                            Placeholder="Phone Number (optional)"
+                                            PlaceholderColor="#99A1B3"
+                                            TextColor="Black" />
+                                    </yummy:PancakeView>
+
+                                    <StackLayout
+                                        x:Name="windowstype"
+                                        IsVisible="false"
+                                        Orientation="Vertical">
+                                        <yummy:PancakeView
+                                            x:Name="extSignup_view"
+                                            Padding="10,0,0,0"
+                                            BackgroundColor="#e3e5e9"
+                                            CornerRadius="5"
+                                            HeightRequest="45">
+                                            <Classes:BorderlessEntry
+                                                x:Name="extSignup"
+                                                ClearButtonVisibility="WhileEditing"
+                                                FontSize="15"
+                                                IsPassword="False"
+                                                Keyboard="Numeric"
+                                                Placeholder="Office Ext. Number"
+                                                PlaceholderColor="#99A1B3"
+                                                TextColor="Black" />
+                                        </yummy:PancakeView>
+                                    </StackLayout>
+
+                                    <yummy:PancakeView
+                                        x:Name="passwordSignup_view"
+                                        Padding="10,0,0,0"
+                                        BackgroundColor="#e3e5e9"
+                                        CornerRadius="5"
+                                        HeightRequest="45">
+
+                                        <Grid HorizontalOptions="FillAndExpand">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Classes:BorderlessEntry
+                                                x:Name="passwordSignup"
+                                                Grid.Column="0"
+                                                ClearButtonVisibility="WhileEditing"
+                                                FontSize="15"
+                                                IsPassword="True"
+                                                Placeholder="Password"
+                                                PlaceholderColor="#99A1B3"
+                                                TextColor="Black" />
+                                            <Image
+                                                x:Name="eyeicon"
+                                                Grid.Column="1"
+                                                Margin="0,0,10,0"
+                                                HorizontalOptions="End"
+                                                Source="ic_eyeon.png"
+                                                VerticalOptions="Center"
+                                                WidthRequest="25">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ShowPass" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </Grid>
+                                    </yummy:PancakeView>
+
+                                    <StackLayout
+                                        x:Name="normaltype"
+                                        IsVisible="true"
+                                        Orientation="Vertical"
+                                        Spacing="10">
+
+
+                                        <!--<yummy:PancakeView
+                                        x:Name="repasswordSignup_view"
+                                        Padding="10,0,0,0"
+                                        BackgroundColor="#e3e5e9"
+                                        CornerRadius="5"
+                                        HeightRequest="45">
+                                        <Classes:BorderlessEntry
+                                            x:Name="repasswordSignup"
+                                            ClearButtonVisibility="WhileEditing"
+                                            FontSize="15"
+                                            IsPassword="True"
+                                            Placeholder="Re-type Password"
+                                            PlaceholderColor="#99A1B3"
+                                            TextColor="#484848" />
+                                    </yummy:PancakeView>-->
+
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Vertical">
+                                        <Label
+                                            FontSize="Default"
+                                            TextColor="Black"
+                                            VerticalOptions="CenterAndExpand">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OpenTerms" />
+                                            </Label.GestureRecognizers>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span FontSize="15" Text="By clicking 'Sign Up', I agree that I have read and accepted the " />
+                                                    <Span
+                                                        FontAttributes="Bold"
+                                                        FontSize="15"
+                                                        Text="Terms of Use."
+                                                        TextColor="Black" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+
+                                </StackLayout>
+
+                                <Button
+                                    x:Name="signupBtn"
+                                    Clicked="SignUpClick"
+                                    Style="{StaticResource DefaultButton}"
+                                    Text="Register" />
+
+                            </StackLayout>
+
+                            <ContentView
+                                x:Name="popupLoadingView"
+                                Padding="10,0"
+                                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                BackgroundColor="#C0808080"
+                                IsVisible="false">
+                                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Frame CornerRadius="10">
+                                        <StackLayout
+                                            BackgroundColor="White"
+                                            HeightRequest="90"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Orientation="Vertical"
+                                            VerticalOptions="CenterAndExpand"
+                                            WidthRequest="200">
+                                            <ActivityIndicator
+                                                x:Name="activityIndicator"
+                                                Margin="0,20,0,0"
+                                                HeightRequest="30"
+                                                HorizontalOptions="CenterAndExpand"
+                                                VerticalOptions="CenterAndExpand"
+                                                WidthRequest="30"
+                                                Color="DodgerBlue" />
+                                            <Label
+                                                x:Name="lblLoadingText"
+                                                HorizontalOptions="CenterAndExpand"
+                                                HorizontalTextAlignment="Center"
+                                                Text="Loading"
+                                                TextColor="Black"
+                                                VerticalOptions="CenterAndExpand"
+                                                VerticalTextAlignment="Center" />
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </ContentView>
+                        </Grid>
+                    </ScrollView>
+                </yummy:PancakeView>
+
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

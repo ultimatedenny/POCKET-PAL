@@ -1,0 +1,111 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Web;
+using System.Web.Configuration;
+using System.Web.Mvc;
+using POCKETPAL_API.Actions;
+using POCKETPAL_API.Class;
+using POCKETPAL_API.Models;
+
+namespace POCKETPAL_API.Controllers
+{
+    public class UserController : Controller
+    {
+        ActionUser userAct = new ActionUser();
+        public ActionResult Index()
+        {
+            string Id = "User Controller";
+            string APIName = WebConfigurationManager.AppSettings["APIName"];
+            string APIVersion = WebConfigurationManager.AppSettings["APIVersion"];
+            string Final = APIName + " - " + APIVersion + " [" + Id + "]";
+            return Json(Final, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SignUp(
+            ModelUser NewData,  
+            string UDID,        string UseNam,  string UseId, string UseArea,
+            string UseEmail,    string UsePass, string UseTel, string VenComp, string VenEmpNo,
+            string UsePlant,    string UseDep,  string RegType, string Model, string Manufacture, string DeviceName, string OS, string Salutation)
+        {
+            NewData.UserName = UseNam;
+            NewData.UserID = UseId;
+            NewData.Email = UseEmail;
+            if (RegType == "1")
+            {
+                NewData.IsWindowsAuthentication = true;
+            }
+            else
+            {
+                NewData.IsWindowsAuthentication = false;
+            }
+            NewData.Password = UsePass;
+            NewData.IsActive = true;
+            NewData.Department = UseDep;
+            NewData.PlantCode = UsePlant;
+            NewData.Phone = UseTel;
+            NewData.Salutation = Salutation;
+            NewData.UDID = UDID;
+            NewData.DomainName = "SHIMANOACE";
+            return Json(userAct.SignUp2(NewData, Model, Manufacture, DeviceName, OS), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult SignIn(string UseId, string UsePass, string DeviceName, string Model, string Manufacture, string OS)
+        {
+            return Json(userAct.SignIn(UseId, UsePass, DeviceName, Model, Manufacture, OS), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult AddPin(string UserId, string UserPin, string BusFunc, string UseNam)
+        {
+            return Json(userAct.AddPin(UserId, UserPin, BusFunc, UseNam), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult RegisterToken(string UserId, string UseNam, string BusFunc, string UserToken)
+        {
+            return Json(userAct.RegisterToken(UserId, UseNam, BusFunc, UserToken), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult UpdateToken(string UseId, string UseNam, string BusFunc, string Token)
+        {
+            return null;
+            //return Json(userAct.UpdateToken(UseId, UseNam, BusFunc, Token), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult DeleteToken(string UserId, string UserToken)
+        {
+            return Json(userAct.DeleteToken(UserId, UserToken), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetIsUserVerified(string UserId)
+        {
+            return Json(userAct.GetIsUserVerified(UserId), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult RequestVerifyUser(string UserId, string UseNam, string EmployeeBadge)
+        {
+            return Json(userAct.RequestVerifyUser(UserId, UseNam, EmployeeBadge), JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        public JsonResult FindUser(string userid)
+        {
+            //return included iswindows or not
+            return null;
+        }
+        public JsonResult FindEmail(string userid, string email)
+        {
+            //save cache from FindUser userid
+            return null;
+        }
+        public JsonResult ChangePasswordNoLoggeed(string userid, string newpassword, string Email)
+        {
+            return null;
+            //return Json(userAct.ChangePasswordNonLogged(userid, newpassword, Email), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult ChangePasswordLogged(string userid, string usepin, string newpassword)
+        {
+            return null;
+            //return Json(userAct.ChangePasswordLogged(userid, usepin, newpassword), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetIsBusFuncAllowed(string BusFunc, string ScannedCode)
+        {
+            return Json(userAct.GetIsBusFuncAllowed(BusFunc, ScannedCode), JsonRequestBehavior.AllowGet);
+        }
+    }
+}

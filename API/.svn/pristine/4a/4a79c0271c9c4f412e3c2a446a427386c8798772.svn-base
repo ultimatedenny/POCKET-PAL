@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Configuration;
+using System.Web.Mvc;
+
+namespace POCKETPAL_API.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            string APIName = WebConfigurationManager.AppSettings["APIName"];
+            string APIVersion = WebConfigurationManager.AppSettings["APIVersion"];
+            string Final = APIName + " - " + APIVersion;
+            return Json(Final, JsonRequestBehavior.AllowGet);
+        }
+    }
+}

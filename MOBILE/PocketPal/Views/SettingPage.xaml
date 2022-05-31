@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="POCKETPAL.Views.SettingPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Control="clr-namespace:POCKETPAL.Controls"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    Title="{Binding Setting}"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="{StaticResource AppBackgroundColor}"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="true">
+
+    <ContentPage.Content>
+        <Grid Margin="10,10,10,10">
+            <RefreshView x:Name="RefPage" Refreshing="RefreshPage">
+                <ScrollView>
+                    <StackLayout>
+                        <Control:InitialsViewControl Name="{Binding Text, Source={x:Reference txtUseNam}}" />
+                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                            <Label
+                                x:Name="txtUseNam"
+                                FontAttributes="Bold"
+                                FontSize="15"
+                                HorizontalTextAlignment="Center"
+                                Text="Deni Andrean"
+                                TextColor="#000000"
+                                TextTransform="Uppercase"
+                                VerticalTextAlignment="Center" />
+                            <Image
+                                x:Name="VerifyImage"
+                                HeightRequest="20"
+                                Source="" />
+                        </StackLayout>
+                        <Label
+                            x:Name="txtUseEmail"
+                            FontSize="13"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="true"
+                            Style="{StaticResource DefaultLabel2}"
+                            Text="deniandrean@sbm.shimano.com.sg"
+                            TextColor="#000000"
+                            TextTransform="Uppercase"
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            x:Name="txtStatus"
+                            FontSize="13"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="true"
+                            Style="{StaticResource DefaultLabel2}"
+                            Text="system-user"
+                            TextColor="#000000"
+                            TextTransform="Uppercase"
+                            VerticalTextAlignment="Center" />
+                        <TableView BackgroundColor="Transparent" VerticalOptions="Center">
+                            <TableRoot>
+                                <TableSection Title="Device Preferences" TextColor="Black">
+                                    <ViewCell>
+                                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                                            <Image HeightRequest="25" Source="https://img.icons8.com/fluent/256/000000/light-on--v1.png" />
+                                            <Label
+                                                Text="Keep Screen On"
+                                                TextColor="{StaticResource Night01}"
+                                                VerticalOptions="Center" />
+                                            <Switch
+                                                x:Name="KeepScreenSwitch"
+                                                HorizontalOptions="EndAndExpand"
+                                                Toggled="OnToggled1" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                    <!--<ViewCell IsEnabled="False">
+                                        <StackLayout Orientation="Horizontal" Margin="10,0,10,0">
+                                            <Image Source="https://img.icons8.com/fluent/256/000000/moon.png" HeightRequest="25"></Image>
+                                            <Label Text="Dark Mode" VerticalOptions="Center" TextColor="{StaticResource Night01}"></Label>
+                                            <Switch HorizontalOptions="EndAndExpand"/>
+                                        </StackLayout>
+                                    </ViewCell>-->
+                                    <!--<ViewCell>
+                                        <StackLayout Orientation="Horizontal" Margin="10,0,10,0">
+                                            <Image Source="https://img.icons8.com/fluent/256/000000/delete.png" HeightRequest="25"></Image>
+                                            <Label Text="Delete Cache" VerticalOptions="Center" TextColor="{StaticResource Night01}"></Label>
+                                        </StackLayout>
+                                    </ViewCell>-->
+                                </TableSection>
+                                <TableSection Title="User Preferences" TextColor="Black">
+                                    <ViewCell>
+                                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OpenVerification" />
+                                            </StackLayout.GestureRecognizers>
+                                            <Image HeightRequest="25" Source="https://img.icons8.com/fluent/256/000000/id-verified.png" />
+                                            <Label
+                                                Text="Verfication"
+                                                TextColor="{StaticResource Night01}"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                    <ViewCell>
+                                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OpenChangePIN" />
+                                            </StackLayout.GestureRecognizers>
+                                            <Image HeightRequest="25" Source="https://img.icons8.com/fluent/256/000000/enter-pin.png" />
+                                            <Label
+                                                Text="Change PIN"
+                                                TextColor="{StaticResource Night01}"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                    <ViewCell>
+                                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OpenChangePassword" />
+                                            </StackLayout.GestureRecognizers>
+                                            <Image HeightRequest="25" Source="https://img.icons8.com/fluent/256/000000/password--v1.png" />
+                                            <Label
+                                                Text="Change Password (non Windows Account)"
+                                                TextColor="{StaticResource Night01}"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                    <ViewCell>
+                                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                                            <Image HeightRequest="25" Source="https://img.icons8.com/fluent/256/000000/face-id.png" />
+                                            <Label
+                                                Text="Use Device Security"
+                                                TextColor="{StaticResource Night01}"
+                                                VerticalOptions="Center" />
+                                            <Switch
+                                                x:Name="DeviceSecSwitch"
+                                                HorizontalOptions="EndAndExpand"
+                                                Toggled="OnToggled2" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                </TableSection>
+                                <TableSection Title="Application Information" TextColor="Black">
+                                    <ViewCell>
+                                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OpenAbout" />
+                                            </StackLayout.GestureRecognizers>
+                                            <Image HeightRequest="25" Source="https://img.icons8.com/fluent/256/000000/info.png" />
+                                            <Label
+                                                Text="About Application"
+                                                TextColor="{StaticResource Night01}"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                    <ViewCell>
+                                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OpenChangeLog" />
+                                            </StackLayout.GestureRecognizers>
+                                            <Image HeightRequest="25" Source="https://img.icons8.com/fluent/256/000000/event-log.png" />
+                                            <Label
+                                                Text="Change Log"
+                                                TextColor="{StaticResource Night01}"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                    <ViewCell>
+                                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OpenBugReport" />
+                                            </StackLayout.GestureRecognizers>
+                                            <Image HeightRequest="25" Source="https://img.icons8.com/fluent/256/000000/bug.png" />
+                                            <Label
+                                                Text="Bug Report"
+                                                TextColor="{StaticResource Night01}"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                    <ViewCell>
+                                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OpenTerms" />
+                                            </StackLayout.GestureRecognizers>
+                                            <Image HeightRequest="25" Source="https://img.icons8.com/fluent/256/000000/terms-and-conditions.png" />
+                                            <Label
+                                                Text="Terms and Conditions"
+                                                TextColor="{StaticResource Night01}"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                    <ViewCell>
+                                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OpenPrivacy" />
+                                            </StackLayout.GestureRecognizers>
+                                            <Image HeightRequest="25" Source="https://img.icons8.com/fluent/256/000000/privacy-policy.png" />
+                                            <Label
+                                                Text="Privacy Policy"
+                                                TextColor="{StaticResource Night01}"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                </TableSection>
+                                <TableSection Title="Account" TextColor="Black">
+                                    <ViewCell>
+                                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="SignOut" />
+                                            </StackLayout.GestureRecognizers>
+                                            <Image HeightRequest="25" Source="https://img.icons8.com/fluent/256/000000/shutdown.png" />
+                                            <Label
+                                                FontAttributes="Bold"
+                                                Text="Sign Out"
+                                                TextColor="{StaticResource Night01}"
+                                                VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                    <!--<ViewCell>
+                                    <StackLayout Orientation="Horizontal" Margin="0,0,0,0" Padding="10,0,10,0">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="DisableAccount"/>
+                                        </StackLayout.GestureRecognizers>
+                                        <Label Text="Disable Account" VerticalOptions="Center" FontAttributes="Bold" TextColor="DarkOrange" ></Label>
+                                    </StackLayout>
+                                </ViewCell>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" Margin="0,0,0,0" Padding="10,0,10,0">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="DeleteAccount"/>
+                                        </StackLayout.GestureRecognizers>
+                                        <Label Text="Delete Account" VerticalOptions="Center" FontAttributes="Bold" TextColor="DarkRed" ></Label>
+                                    </StackLayout>
+                                </ViewCell>-->
+                                </TableSection>
+                            </TableRoot>
+                        </TableView>
+                    </StackLayout>
+                </ScrollView>
+            </RefreshView>
+            <ContentView
+                x:Name="popupLoadingView"
+                Padding="10,0"
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="#C0808080"
+                IsVisible="false">
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Frame CornerRadius="10">
+                        <StackLayout
+                            BackgroundColor="White"
+                            HeightRequest="90"
+                            HorizontalOptions="CenterAndExpand"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="200">
+                            <ActivityIndicator
+                                x:Name="activityIndicator"
+                                Margin="0,20,0,0"
+                                HeightRequest="30"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30"
+                                Color="DodgerBlue" />
+                            <Label
+                                x:Name="lblLoadingText"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Text="Loading"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

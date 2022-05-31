@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "972873888406",
+    "firebase_url": "https://pocket-pal-shimano.firebaseio.com",
+    "project_id": "pocket-pal-shimano",
+    "storage_bucket": "pocket-pal-shimano.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:972873888406:android:6e3926d62a9cb8567648b7",
+        "android_client_info": {
+          "package_name": "com.shimano.pocketpal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "972873888406-iuh5urlhc5k2grm7ltoknauq6to5crbq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBw9atetL1o1qu9fTNz-Un_j7zEWV4WIYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "972873888406-iuh5urlhc5k2grm7ltoknauq6to5crbq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "972873888406-sujrrjvq5phbehup5vsd9k9se1a3b44f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.shimano.pocketpal"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

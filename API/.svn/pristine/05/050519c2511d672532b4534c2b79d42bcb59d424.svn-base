@@ -1,0 +1,626 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.DirectoryServices;
+using System.DirectoryServices.AccountManagement;
+using System.Configuration;
+using System.Data;
+using System.Text;
+using POCKETPAL_API.Class;
+using POCKETPAL_API.Models;
+using System.IO;
+using System.Security.Cryptography;
+using static System.Net.Mime.MediaTypeNames;
+using System.Web.Hosting;
+
+namespace POCKETPAL_API.Actions
+{
+    public class ActionUser
+    {
+        DataTable dt;
+        ClassCreateIssuLog CCIL = new ClassCreateIssuLog();
+
+        public string ConnectionDB = ConfigurationManager.ConnectionStrings["POCKETPALCON"].ToString();
+        public PP<ModelResponse> GetIsUserVerified(string UserId)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string query;
+                query = @"EXEC PP_GET_IS_USER_VERIFIED '" + UserId + "'";
+                using (ClassMSSQL s = new ClassMSSQL())
+                {
+                    dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+                }
+                var data0 = (from rw in dt.AsEnumerable()
+                             select new ModelResponse
+                             {
+                                 Message = rw["Message"].ToString(),
+                                 Success = rw["Success"].ToBoolean()
+
+                             }).FirstOrDefault();
+                if (data0.Success == true)
+                {
+                    return new PP<ModelResponse>
+                    {
+                        Success = true,
+                        Message = ClassString.USERAREVERIFIED.ToString(),
+                        data = null
+                    };
+                }
+                else
+                {
+                    return new PP<ModelResponse>
+                    {
+                        Success = false,
+                        Message = ClassString.USERNOTVERIFIED.ToString(),
+                        data = null
+                    };
+                }
+            }
+            catch (Exception msg)
+            {
+                return new PP<ModelResponse>
+                {
+                    Success = false,
+                    Message = msg.Message.ToString(),
+                    data = null
+                };
+            }
+        }
+        public PP<ModelResponse> RequestVerifyUser(string UserId, string UseNam, string EmployeeBadge)
+        {
+            try 
+            {
+                DataTable dt = new DataTable();
+                string query;
+                query = @"EXEC PP_VERIFY_USER '" + UserId + "','" + UseNam + "','" + EmployeeBadge + "'";
+                using (ClassMSSQL s = new ClassMSSQL())
+                {
+                    dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+                }
+                var data0 = (from rw in dt.AsEnumerable()
+                             select new ModelResponse
+                             {
+                                 Message = rw["Message"].ToString(),
+                                 Success = rw["Success"].ToBoolean()
+
+                             }).FirstOrDefault();
+                if(data0.Success == true)
+                {
+                    return new PP<ModelResponse>
+                    {
+                        Success = true,
+                        Message = data0.Message.ToString(),
+                        data = null
+                    };
+                }
+                else
+                {
+                    return new PP<ModelResponse>
+                    {
+                        Success = false,
+                        Message = data0.Message.ToString(),
+                        data = null
+                    };
+                }
+            }
+            catch(Exception msg)
+            {
+                return new PP<ModelResponse>
+                {
+                    Success = false,
+                    Message = msg.Message.ToString(),
+                    data = null
+                };
+            }
+        }
+        public PP<ModelResponse> DeleteToken(string UserId, string UserToken)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string query;
+                query = @"EXEC [PP_DELETE_TOKEN] '" + UserId + "','" + UserToken + "'";
+                using (ClassMSSQL s = new ClassMSSQL())
+                {
+                    dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+                }
+                var data0 = (from rw in dt.AsEnumerable()
+                             select new ModelResponse
+                             {
+                                 Success = rw["SUCCESS"].ToBoolean(),
+                                 Message = rw["MESSAGE"].ToString()
+                             }).FirstOrDefault();
+
+                if (data0.Success == true)
+                {
+                    return new PP<ModelResponse>
+                    {
+                        Success = true,
+                        Message = ClassString.SUCCESS.ToString(),
+                        data = null
+                    };
+                }
+                else
+                {
+                    return new PP<ModelResponse>
+                    {
+                        Success = false,
+                        Message = ClassString.FAILED.ToString(),
+                        data = null
+                    };
+                }
+            }
+            catch(Exception ex)
+            {
+                return new PP<ModelResponse>
+                {
+                    Success = false,
+                    Message = ClassString.FAILED.ToString(),
+                    data = null
+                };
+            }
+        }
+        public PP<ModelResponse> RegisterToken(string UserId, string UseNam, string BusFunc, string UserToken)
+        {
+            try
+            {
+                string query;
+                query = "EXEC [PP_CREATE_TOKEN] '" + UserId + "','" + UseNam + "','" + BusFunc + "','" + UserToken + "'";
+                using (ClassMSSQL s = new ClassMSSQL())
+                {
+                    dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+                }
+                var data0 = (from rw in dt.AsEnumerable()
+                             select new ModelResponse
+                             {
+                                 Message = rw["MESSAGE"].ToString()
+                             }).FirstOrDefault();
+                if (data0.Success == true)
+                {
+                    return new PP<ModelResponse>
+                    {
+                        Success = true,
+                        Message = ClassString.SUCCESS.ToString(),
+                        data = null
+                    };
+                }
+                else
+                {
+                    return new PP<ModelResponse>
+                    {
+                        Success = false,
+                        Message = ClassString.FAILED.ToString(),
+                        data = null
+                    };
+                }
+            }
+            catch (Exception msg)
+            {
+                return new PP<ModelResponse>
+                {
+                    Success = false,
+                    Message = msg.Message.ToString(),
+                    data = null
+                };
+            }
+        }
+        public PP<ModelResponse> AddPin(string UserId, string UserPin, string BusFunc, string UseNam)
+        {
+            try
+            {
+                string query = "EXEC [PP_CREATE_PIN] '" + UserId + "','" + UserPin + "','" + BusFunc + "','" + UseNam + "'";
+                using (ClassMSSQL s = new ClassMSSQL())
+                {
+                    dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+                }
+                var data0 = (from rw in dt.AsEnumerable()
+                             select new ModelResponse
+                             {
+                                 Success = rw["SUCCESS"].ToBoolean(),
+                                 Message = rw["MESSAGE"].ToString()
+                             }).FirstOrDefault();
+                if (data0.Success == true)
+                {
+                    return new PP<ModelResponse>
+                    {
+                        Success = true,
+                        Message = ClassString.SUCCESS.ToString(),
+                        data = null
+                    };
+                }
+                else
+                {
+                    return new PP<ModelResponse>
+                    {
+                        Success = false,
+                        Message = ClassString.FAILED.ToString(),
+                        data = null
+                    };
+                }
+            }
+            catch (Exception msg)
+            {
+                return new PP<ModelResponse>
+                {
+                    Success = false,
+                    Message = msg.Message.ToString(),
+                    data = null
+                };
+            }
+        }
+        public PP<ModelResponse> GetIsBusFuncAllowed(string BusFunc, string ScannedCode)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string query;
+                string _ScannedCode = "";
+                if (ScannedCode.Contains("QR-EP"))
+                {
+                    _ScannedCode = "QR-EP";
+                }
+                else if (ScannedCode.Contains("QR-VMS"))
+                {
+                    _ScannedCode = "QR-VM";
+                }
+                else if (ScannedCode.Contains("JA-"))
+                {
+                    _ScannedCode = "QR-JA";
+                }
+                else
+                {
+                    _ScannedCode = ScannedCode;
+                }
+                query = @"EXEC [PP_GET_IS_BUSFUNC_ALLOWED] '" + BusFunc + "','" + _ScannedCode + "'";
+                using (ClassMSSQL s = new ClassMSSQL())
+                {
+                    dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+                }
+                var data0 = (from rw in dt.AsEnumerable()
+                             select new ModelResponse
+                             {
+                                 Success = rw["SUCCESS"].ToBoolean(),
+                                 Message = rw["MESSAGE"].ToString()
+                             }).FirstOrDefault();
+
+                if (data0.Success == true)
+                {
+                    return new PP<ModelResponse>
+                    {
+                        Success = true,
+                        Message = ClassString.SUCCESS.ToString(),
+                        data = null
+                    };
+                }
+                else
+                {
+                    return new PP<ModelResponse>
+                    {
+                        Success = false,
+                        Message = ClassString.FAILED.ToString(),
+                        data = null
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new PP<ModelResponse>
+                {
+                    Success = false,
+                    Message = ClassString.FAILED.ToString(),
+                    data = null
+                };
+            }
+        }
+
+
+
+
+        public PP<ModelUser> SignIn(string UseId, string UsePass, string DeviceName, string Model, string Manufacture, string OS)
+        {
+            try
+            {
+                if (AuthSignIn(UseId, UsePass) == false)
+                {
+                    return new PP<ModelUser>
+                    {
+                        Success = false,
+                        Message = ClassString.SIGNINFAILED.ToString(),
+                        data = null
+                    };
+                }
+                else
+                {
+                    string query;
+                    DataTable dt = new DataTable();
+                    query = @"EXEC [PP_UPDATE_LASTLOGIN] '" + UseId + "','" + DeviceName + "'";
+                    using (ClassMSSQL s = new ClassMSSQL())
+                    {
+                        dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+                    }
+                    var data0 = (from row in dt.AsEnumerable()
+                                 select new ModelResponse()
+                                 {
+                                     Success = row["Success"].ToBoolean(),
+                                     Message = row["Message"].ToString()
+                                 }).FirstOrDefault();
+                    if (data0.Success == true)
+                    {
+                        query = @"EXEC [PP_GET_USER_SUCCESS_LOGIN] '" + UseId + "'";
+                        using (ClassMSSQL s = new ClassMSSQL())
+                        {
+                            dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+                        }
+                        var data1 = (from row in dt.AsEnumerable()
+                                     select new ModelUser()
+                                     {
+                                         ID = Convert.ToInt32(row["ID"]),
+                                         PlantCode = row["PlantCode"].ToString(),
+                                         UserID = row["UserID"].ToString(),
+                                         UserName = row["UserName"].ToString(),
+                                         Department = row["Department"].ToString(),
+                                         Email = row["Email"].ToString(),
+                                         Phone = row["Phone"].ToString(),
+                                         BusinessFunction = row["BusinessFunction"].ToString(),
+                                         Photo = row["Photo"].ToString(),
+                                         LineID = row["LineID"].ToString(),
+                                         IsActive = row["IsActive"].ToBoolean(),
+                                         IsWindowsAuthentication = row["IsWindowsAuthentication"].ToBoolean(),
+                                         LastLoginDevice = row["LastLoginDevice"].ToString(),
+                                         LastLoginDate = Convert.ToDateTime(DateTime.Parse(row["LastLoginDate"].ToString()).Date).ToString("dd-MM-yyyy HH:mm tt"),
+                                         DomainName = row["DomainName"].ToString(),
+                                         Salutation = row["Salutation"].ToString(),
+                                         UserPIN = row["UserPIN"].ToString(),
+                                         //LastLoginDate = Convert.ToDateTime(DateTime.Parse(row["LastLoginDate"].ToString()).Date),
+                                     }).FirstOrDefault();
+
+                        query = @"EXEC [PP_UPDATE_USER_DEVICE_LOGIN]'" + UseId + "','" + DeviceName + "','" + OS + "','" + Model + "','" + Manufacture + "'";
+                        using (ClassMSSQL s = new ClassMSSQL())
+                        {
+                            dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+                        }
+                        ///-- AUTO VERIFY
+                        if(data1.IsWindowsAuthentication == true)
+                        {
+                            query = @"EXEC [PP_AUTO_VERIFY_USERWIN]'" + data1.UserID + "','" + data1.UserName + "'";
+                            using (ClassMSSQL s = new ClassMSSQL())
+                            {
+                                dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+                            }
+                        }
+                        ///-- AUTO VERIFY
+
+                        return new PP<ModelUser>
+                        {
+                            Success = true,
+                            Message = ClassString.SIGNINSUCCESSED.ToString(),
+                            data = data1
+                        };
+                    }
+                    else
+                    {
+                        return new PP<ModelUser>
+                        {
+                            Success = false,
+                            Message = ClassString.SIGNINFAILED.ToString(),
+                            data = null
+                        };
+                    }
+                }
+            }
+            catch (Exception msg)
+            {
+                string Id = DeviceName + "--" + Model + "--" + OS;
+                CCIL.CreateLog(UseId, DeviceName, Model, Manufacture, OS, msg.ToString());
+                return new PP<ModelUser>
+                {
+                    Success = false,
+                    Message = msg.Message.ToString(),
+                    data = null
+                };
+            }
+        }
+        public bool AuthSignIn(string UseId, string UsePass)
+        {
+            ClassWinAuth _wa = new ClassWinAuth();
+            string query;
+            query = @"exec [PP_GET_IS_USER_EXISTS] '" + UseId + "'";
+            using (ClassMSSQL s = new ClassMSSQL())
+            {
+                dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+            }
+            var data = (from row in dt.AsEnumerable()
+                        select new ModelResponse() { Success = row["Success"].ToBoolean(), Message = row["Message"].ToString() }).FirstOrDefault();
+
+            if (data.Success == true)
+            {
+                query = @"exec [PP_GET_USER_EXIST] '" + UseId + "'";
+                using (ClassMSSQL s = new ClassMSSQL())
+                {
+                    dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+                }
+                var data1 = (from row in dt.AsEnumerable()
+                             select new ModelUser()
+                             {
+                                 UserID = row["USERID"].ToString(),
+                                 Password = row["PASSWORD"].ToString(),
+                                 DomainName = row["DOMAINNAME"].ToString(),
+                                 IsWindowsAuthentication = row["ISWINDOWSAUTHENTICATION"].ToBoolean()
+                             }).FirstOrDefault();
+
+                if (data1.IsWindowsAuthentication == false)
+                {
+                    query = @"EXEC [PP_GET_COMPARE_PASSWORD] '" + UseId + "','" + UsePass + "'";
+                    using (ClassMSSQL s = new ClassMSSQL())
+                    {
+                        dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+                    }
+                    var data2 = (from row in dt.AsEnumerable()
+                                 select new ModelResponse() { Success = row["Success"].ToBoolean(), Message = row["Message"].ToString() }).FirstOrDefault();
+                    if (data2.Success == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return _wa.WinAuth(UseId, UsePass, false, data1.DomainName);
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public PP<ModelUser> SignUp2(ModelUser NewData, string Model, string Manufacture, string DeviceName, string OS)
+        {
+            try
+            {
+                if (AuthSignUp2(NewData) == false)
+                {
+                    return new PP<ModelUser>
+                    {
+                        Success = false,
+                        Message = ClassString.SIGN_UP_FAILED.ToString(),
+                        data = null
+                    };
+                }
+                else
+                {
+                    string query;
+                    DataTable dt = new DataTable();
+                    query = "EXEC [PP_CREATE_USERMDCDB] " +
+                            "'" + NewData.PlantCode + "','" + NewData.UserID + "','" + NewData.UserName + "','" + NewData.Password + "','" + NewData.Department + "'," +
+                            "'" + NewData.Email + "','" + NewData.Phone + "','" + NewData.Photo + "','" + NewData.LineID + "'," +
+                            "" + NewData.IsWindowsAuthentication + ",'" + NewData.Salutation + "'," +
+                            "'" + Model + "','" + Manufacture + "','" + DeviceName + "','" + OS + "'";
+                    using (ClassMSSQL s = new ClassMSSQL())
+                    {
+                        dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+                    }
+                    var data0 = (from row in dt.AsEnumerable()
+                                 select new ModelResponse()
+                                 {
+                                     Success = row["SUCCESS"].ToBoolean(),
+                                     Message = row["MESSAGE"].ToString(),
+
+                                 }).FirstOrDefault();
+                    if (data0.Success == true)
+                    {
+                        query = "EXEC [PP_CREATE_USERVMS] " +
+                           "'" + NewData.PlantCode + "','" + NewData.UserID + "','" + NewData.UserName + "','" + NewData.Password + "','" + NewData.Department + "'," +
+                           "'" + NewData.Email + "','" + NewData.Phone + "','" + NewData.Photo + "','" + NewData.LineID + "'," +
+                           "" + NewData.IsWindowsAuthentication + ",'" + NewData.Salutation + "'";
+                        using (ClassMSSQL s = new ClassMSSQL())
+                        {
+                            dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+                        }
+                        var data1 = (from row in dt.AsEnumerable()
+                                     select new ModelResponse()
+                                     {
+                                         Success = row["SUCCESS"].ToBoolean(),
+                                         Message = row["MESSAGE"].ToString(),
+
+                                     }).FirstOrDefault();
+                        if (data1.Success == true)
+                        {
+                            ///-- AUTO VERIFY
+                            if (NewData.IsWindowsAuthentication == true)
+                            {
+                                query = @"EXEC [PP_AUTO_VERIFY_USERWIN]'" + NewData.UserID + "','" + NewData.UserName + "'";
+                                using (ClassMSSQL s = new ClassMSSQL())
+                                {
+                                    dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+                                }
+                            }
+                            ///-- AUTO VERIFY
+
+                            return new PP<ModelUser>
+                            {
+                                Success = true,
+                                Message = ClassString.SUCCESS.ToString(),
+                                data = null
+                            };
+                        }
+                        else
+                        {
+                            return new PP<ModelUser>
+                            {
+                                Success = false,
+                                Message = ClassString.SIGN_UP_FAILED.ToString(),
+                                data = null
+                            };
+                        }
+                    }
+                    else
+                    {
+                        return new PP<ModelUser>
+                        {
+                            Success = false,
+                            Message = ClassString.SIGN_UP_FAILED.ToString(),
+                            data = null
+                        };
+                    }
+                }
+            }
+            catch (Exception msg)
+            {
+                return new PP<ModelUser>
+                {
+                    Success = false,
+                    Message = msg.Message.ToString(),
+                    data = null
+                };
+            }
+        }
+        public bool AuthSignUp2(ModelUser NewData)
+        {
+            try
+            {
+                string query;
+                DataTable dt = new DataTable();
+                query = @"EXEC PP_IS_USER_REGISTERED '" + NewData.UserID + "'";
+                using (ClassMSSQL s = new ClassMSSQL())
+                {
+                    dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+                }
+                var data0 = (from row in dt.AsEnumerable()
+                             select new ModelResponse()
+                             {
+                                 Success = row["SUCCESS"].ToBoolean(),
+                                 Message = row["MESSAGE"].ToString(),
+
+                             }).FirstOrDefault();
+
+                if (data0.Success == true)
+                {
+                    if (NewData.IsWindowsAuthentication == true)
+                    {
+                        ClassWinAuth _wa = new ClassWinAuth();
+                        return _wa.WinAuth(NewData.UserID, NewData.Password, false, NewData.DomainName);
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception msg)
+            {
+                return false;
+            }
+        }
+    }
+}

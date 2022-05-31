@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="POCKETPAL.Views.PinCreatePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:vm="clr-namespace:POCKETPAL.Models"
+    xmlns:xfpinview="clr-namespace:XFPINView;assembly=XFPINView"
+    ios:Page.UseSafeArea="true"
+    BackgroundColor="{StaticResource AppBackgroundColor}"
+    NavigationPage.HasNavigationBar="False"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False">
+
+    <Grid>
+        <Image
+            Aspect="AspectFill"
+            Source="IMG_BACKGROUOND"
+            VerticalOptions="FillAndExpand" />
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="0.9*" />
+            </Grid.RowDefinitions>
+        </Grid>
+        <Grid Grid.Row="0">
+            <StackLayout Margin="20,0,20,0" BackgroundColor="Transparent">
+
+                <StackLayout
+                    Margin="0,20,0,0"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <Image
+                        x:Name="headerimg"
+                        HeightRequest="35"
+                        HorizontalOptions="Start"
+                        Source="IMG_ICON"
+                        WidthRequest="35" />
+                    <Label
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span
+                                    FontAttributes="Bold"
+                                    Text="POCKET"
+                                    TextColor="Black" />
+                                <Span
+                                    FontAttributes="Bold"
+                                    Text="PAL"
+                                    TextColor="#ed1c24" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+
+                <Label
+                    x:Name="txtPIN"
+                    Margin="0,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="40"
+                    Text="Input PIN"
+                    TextColor="#2d6ab5" />
+
+                <Label
+                    Margin="0,0,0,0"
+                    FontAttributes="Bold"
+                    FontSize="15"
+                    Text="Create your PIN for your double security"
+                    TextColor="#403E45" />
+
+                <xfpinview:PINView
+                    x:Name="Pin1"
+                    Margin="0,50,0,0"
+                    AutoDismissKeyboard="True"
+                    BoxBackgroundColor="LightGray"
+                    BoxBorderColor="LightGray"
+                    BoxFocusAnimation="ZoomInOut"
+                    BoxFocusColor="LightGray"
+                    BoxShape="RoundCorner"
+                    PINEntryCompleted="Complete"
+                    PINLength="4"
+                    Color="#2d6ab5" />
+
+            </StackLayout>
+        </Grid>
+
+    </Grid>
+</ContentPage>
+

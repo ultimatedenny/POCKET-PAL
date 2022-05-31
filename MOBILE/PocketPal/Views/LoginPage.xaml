@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="POCKETPAL.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Classes="clr-namespace:POCKETPAL.Classes"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False">
+
+    <ContentPage.Content>
+        <Grid>
+
+            <AbsoluteLayout BackgroundColor="#f2f2f2">
+                <Grid BackgroundColor="Red">
+                    <Image
+                        Aspect="AspectFill"
+                        Source="IMG_BACKGROUOND"
+                        VerticalOptions="Fill" />
+                    <Grid RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.1*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" BackgroundColor="Transparent">
+                            <StackLayout Margin="20,0,20,0" BackgroundColor="Transparent">
+                                <StackLayout
+                                    Margin="0,20,0,0"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <Image
+                                        x:Name="headerimg"
+                                        HeightRequest="30"
+                                        HorizontalOptions="Start"
+                                        Source="IMG_ICON"
+                                        WidthRequest="30" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Title"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontSize="15"
+                                                    Text="POCKET"
+                                                    TextColor="Black" />
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontSize="15"
+                                                    Text="PAL"
+                                                    TextColor="#ed1c24" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                                <Label
+                                    Margin="0,0,0,0"
+                                    FontAttributes="Bold"
+                                    FontSize="40"
+                                    Text="Login"
+                                    TextColor="#2d6ab5" />
+                                <Label
+                                    Margin="0,40,0,10"
+                                    FontAttributes="Bold"
+                                    FontSize="15"
+                                    Text="Offers you greater flexibility and increase workforce mobility"
+                                    TextColor="#403E45" />
+                            </StackLayout>
+                        </Grid>
+                        <ScrollView
+                            Grid.Row="1"
+                            Margin="0,0,0,0"
+                            Padding="0,20,0,20"
+                            BackgroundColor="Transparent"
+                            VerticalOptions="EndAndExpand">
+                            <Grid>
+                                <StackLayout
+                                    Margin="20,0,20,0"
+                                    Spacing="10"
+                                    VerticalOptions="End">
+
+                                    <yummy:PancakeView
+                                        x:Name="usernameLogin_view"
+                                        Padding="10,0,0,0"
+                                        BackgroundColor="#e3e5e9"
+                                        CornerRadius="5"
+                                        HeightRequest="45">
+                                        <Classes:BorderlessEntry
+                                            x:Name="usernameLogin"
+                                            ClearButtonVisibility="WhileEditing"
+                                            FontSize="15"
+                                            Keyboard="Email"
+                                            Placeholder="Employee Number or Windows ID"
+                                            PlaceholderColor="#99A1B3"
+                                            TextColor="Black" />
+                                    </yummy:PancakeView>
+
+                                    <yummy:PancakeView
+                                        x:Name="passwordSignup_view"
+                                        Padding="10,0,0,0"
+                                        BackgroundColor="#e3e5e9"
+                                        CornerRadius="5"
+                                        HeightRequest="45">
+
+                                        <Grid HorizontalOptions="FillAndExpand">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Classes:BorderlessEntry
+                                                x:Name="passwordLogin"
+                                                Grid.Column="0"
+                                                ClearButtonVisibility="WhileEditing"
+                                                FontSize="15"
+                                                IsPassword="True"
+                                                Placeholder="Password"
+                                                PlaceholderColor="#99A1B3"
+                                                TextColor="Black" />
+
+                                            <Image
+                                                x:Name="eyeicon"
+                                                Grid.Column="1"
+                                                Margin="0,0,10,0"
+                                                HorizontalOptions="End"
+                                                Source="round_visibility_black_48.png"
+                                                VerticalOptions="Center"
+                                                WidthRequest="25">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ShowPass" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </Grid>
+
+                                    </yummy:PancakeView>
+
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                        <CheckBox
+                                            x:Name="CheckBoxRememberme"
+                                            IsChecked="True"
+                                            VerticalOptions="Center"
+                                            Color="#403E45" />
+                                        <Label
+                                            FontSize="15"
+                                            Text="Remember me"
+                                            TextColor="#403E45"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                    </StackLayout>
+
+                                    <StackLayout>
+
+                                        <Button
+                                            x:Name="loginBtn"
+                                            Clicked="LoginClick"
+                                            Style="{StaticResource DefaultButton}"
+                                            Text="Login" />
+
+                                        <Label
+                                            FontAttributes="None"
+                                            FontSize="10"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="OR"
+                                            TextColor="#403E45"
+                                            VerticalOptions="CenterAndExpand" />
+
+                                        <Button
+                                            x:Name="signUpbtn"
+                                            Clicked="SignUpClick"
+                                            Style="{StaticResource DefaultButton}"
+                                            Text="Register" />
+
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Default"
+                                            HorizontalOptions="CenterAndExpand"
+                                            IsVisible="false"
+                                            Text="Trouble log in?"
+                                            TextColor="#403E45"
+                                            VerticalOptions="CenterAndExpand">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ForgotPassword" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </Grid>
+                        </ScrollView>
+                    </Grid>
+                </Grid>
+                <ContentView
+                    x:Name="popupLoadingView"
+                    Padding="10,0"
+                    AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    BackgroundColor="#C0808080"
+                    IsVisible="false">
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Frame CornerRadius="10">
+                            <StackLayout
+                                BackgroundColor="White"
+                                HeightRequest="90"
+                                HorizontalOptions="CenterAndExpand"
+                                Orientation="Vertical"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="200">
+                                <ActivityIndicator
+                                    x:Name="activityIndicator"
+                                    Margin="0,20,0,0"
+                                    HeightRequest="30"
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="30"
+                                    Color="DodgerBlue" />
+                                <Label
+                                    x:Name="lblLoadingText"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Text="Loading"
+                                    TextColor="Black"
+                                    VerticalOptions="CenterAndExpand"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </ContentView>
+            </AbsoluteLayout>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

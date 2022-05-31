@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBEPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="EPDetails">
+    <Key>
+      <PropertyRef Name="DetailId" />
+    </Key>
+    <Property Name="DetailId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MasterId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UseID" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EPMaster">
+    <Key>
+      <PropertyRef Name="MasterId" />
+    </Key>
+    <Property Name="MasterId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SENo" Type="int" Nullable="false" />
+    <Property Name="EPNo" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="UseDep" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="PlantID" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Destination" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Out" Type="time" Precision="7" Nullable="false" />
+    <Property Name="In" Type="time" Precision="7" Nullable="false" />
+    <Property Name="CompTrans" Type="bit" Nullable="false" />
+    <Property Name="CompTransTime" Type="time" Precision="7" />
+    <Property Name="ActOut" Type="time" Precision="7" />
+    <Property Name="ActIn" Type="time" Precision="7" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="date" />
+    <Property Name="Status" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ExpireTicket" Type="nvarchar" MaxLength="20" />
+    <Property Name="Approver" Type="nvarchar" MaxLength="20" />
+    <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdateDate" Type="date" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_EPDetails_OrderMaster">
+    <End Role="EPMaster" Type="Self.EPMaster" Multiplicity="1" />
+    <End Role="EPDetails" Type="Self.EPDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EPMaster">
+        <PropertyRef Name="MasterId" />
+      </Principal>
+      <Dependent Role="EPDetails">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBEPModelStoreContainer">
+    <EntitySet Name="EPDetails" EntityType="Self.EPDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EPMaster" EntityType="Self.EPMaster" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_EPDetails_OrderMaster" Association="Self.FK_EPDetails_OrderMaster">
+      <End Role="EPMaster" EntitySet="EPMaster" />
+      <End Role="EPDetails" EntitySet="EPDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

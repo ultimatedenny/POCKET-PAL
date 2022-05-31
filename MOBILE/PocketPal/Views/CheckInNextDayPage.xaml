@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="POCKETPAL.Views.CheckInNextDayPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Xam.Plugin.SimpleBottomDrawer;assembly=Xam.Plugin.SimpleBottomDrawer"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:PocketPal"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:renderers="clr-namespace:PocketPal.Renderers"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+
+    <Grid>
+        <Image Aspect="Fill" BackgroundColor="gray" />
+        <Grid RowSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.0*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout
+                x:Name="pnl1"
+                Grid.Row="0"
+                BackgroundColor="White">
+                <StackLayout Spacing="0" VerticalOptions="EndAndExpand">
+                    <Label
+                        x:Name="txtGreeting"
+                        Margin="0,10,0,0"
+                        FontAttributes="Bold"
+                        FontSize="35"
+                        HorizontalOptions="Center"
+                        Text="WELCOME !"
+                        TextColor="Black" />
+                    <Label
+                        x:Name="txtName"
+                        Margin="0,10,0,0"
+                        FontAttributes="Bold"
+                        FontSize="Title"
+                        HorizontalOptions="Center"
+                        Text="Deni Andrean"
+                        TextColor="Black" />
+                    <Label
+                        x:Name="txtInOut"
+                        Margin="0,80,0,0"
+                        FontAttributes="Italic"
+                        FontSize="15"
+                        HorizontalOptions="Center"
+                        Text="CHECK IN"
+                        TextColor="Black" />
+                    <Label
+                        x:Name="txtTime"
+                        Margin="0,10,0,0"
+                        FontAttributes="Italic"
+                        FontSize="15"
+                        HorizontalOptions="Center"
+                        Text="01-01-2020 08:00:00"
+                        TextColor="Black" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout
+                x:Name="pnl2"
+                Grid.Row="0"
+                BackgroundColor="White">
+                <StackLayout Spacing="0" VerticalOptions="EndAndExpand">
+                    <Label
+                        x:Name="txtMealQuestion"
+                        Margin="10,0,10,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="Do you want order a meal for lunch ?"
+                        TextColor="Black" />
+                    <StackLayout
+                        Margin="30"
+                        Orientation="Horizontal"
+                        Spacing="10"
+                        VerticalOptions="EndAndExpand">
+                        <Button
+                            x:Name="btnMealYes"
+                            BackgroundColor="#80e27e"
+                            Clicked="btnMealYesClick"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            HeightRequest="50"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="YES"
+                            TextColor="#000000"
+                            VerticalOptions="Center"
+                            WidthRequest="75" />
+                        <Button
+                            x:Name="btnMealNo"
+                            BackgroundColor="#395e71"
+                            Clicked="btnMealNoClick"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            HeightRequest="50"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="NO"
+                            TextColor="White"
+                            VerticalOptions="Center"
+                            WidthRequest="75" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout
+                x:Name="pnl3"
+                Grid.Row="0"
+                BackgroundColor="White">
+                <StackLayout Spacing="0" VerticalOptions="EndAndExpand">
+                    <Label
+                        x:Name="txtDateQuestion"
+                        Margin="0,10,0,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="How many day you will stay ?"
+                        TextColor="Black" />
+                    <DatePicker
+                        x:Name="txtDate"
+                        HorizontalOptions="CenterAndExpand"
+                        MinimumDate="01/01/2020"
+                        TextColor="#000000" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout
+                x:Name="pnlx"
+                Grid.Row="1"
+                BackgroundColor="White">
+                <StackLayout
+                    Margin="30"
+                    Orientation="Vertical"
+                    Spacing="10"
+                    VerticalOptions="EndAndExpand">
+                    <Button
+                        x:Name="btnNext"
+                        BackgroundColor="#80e27e"
+                        Clicked="btnNextClick"
+                        CornerRadius="10"
+                        FontAttributes="Bold"
+                        FontSize="15"
+                        HeightRequest="50"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="NEXT"
+                        TextColor="#000000"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="250" />
+                    <Button
+                        x:Name="btnBack"
+                        BackgroundColor="#395e71"
+                        Clicked="btnBackClick"
+                        CornerRadius="10"
+                        FontAttributes="Bold"
+                        FontSize="15"
+                        HeightRequest="50"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="HOME"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="250" />
+                </StackLayout>
+            </StackLayout>
+
+        </Grid>
+    </Grid>
+
+
+</ContentPage>

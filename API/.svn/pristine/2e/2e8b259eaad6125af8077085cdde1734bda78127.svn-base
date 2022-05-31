@@ -1,0 +1,359 @@
+﻿++Solution 'POCKETPAL-API' ‎(1 of 1 project)
+i:{00000000-0000-0000-0000-000000000000}:POCKETPAL-API.sln
+++POCKETPAL-API
+i:{00000000-0000-0000-0000-000000000000}:POCKETPAL-API
+++Properties
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\properties\
+++AssemblyInfo.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\properties\assemblyinfo.cs
+++References
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Antlr3.Runtime
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++EntityFramework
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++EntityFramework.SqlServer
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++LinqToExcel
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++log4net
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Microsoft.AI.Agent.Intercept
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Microsoft.AI.DependencyCollector
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Microsoft.AI.PerfCounterCollector
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Microsoft.AI.ServerTelemetryChannel
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Microsoft.AI.Web
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Microsoft.AI.WindowsServer
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Microsoft.ApplicationInsights
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Microsoft.AspNet.TelemetryCorrelation
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Microsoft.CodeDom.Providers.DotNetCompilerPlatform
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Microsoft.CSharp
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Microsoft.Web.Infrastructure
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Newtonsoft.Json
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Remotion
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Remotion.Data.Linq
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Remotion.Interfaces
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Buffers
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.ComponentModel.DataAnnotations
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Configuration
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Core
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Data
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Data.DataSetExtensions
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Diagnostics.DiagnosticSource
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.DirectoryServices
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.DirectoryServices.AccountManagement
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Drawing
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.EnterpriseServices
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Management
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Memory
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Net.Http
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Net.Http.WebRequest
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Numerics
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Numerics.Vectors
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Runtime.Caching
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Runtime.CompilerServices.Unsafe
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Runtime.Serialization
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Security
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Web
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Web.Abstractions
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Web.ApplicationServices
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Web.DynamicData
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Web.Entity
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Web.Extensions
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Web.Helpers
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Web.Mvc
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Web.Optimization
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Web.Razor
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Web.Routing
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Web.Services
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Web.WebPages
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Web.WebPages.Deployment
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Web.WebPages.Razor
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Xml
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++System.Xml.Linq
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++WebGrease
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:
+++Actions
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\actions\
+++App_Data
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\app_data\
+++App_Start
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\app_start\
+++Class
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\class\
+++Content
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\content\
+++Controllers
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\controllers\
+++EformController.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\controllers\eformcontroller.cs
+++ErecruitmentController.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\controllers\erecruitmentcontroller.cs
+++ExitPermitController.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\controllers\exitpermitcontroller.cs
+++HomeController.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\controllers\homecontroller.cs
+++MasterController.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\controllers\mastercontroller.cs
+++SSITController.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\controllers\ssitcontroller.cs
+++TestController.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\controllers\testcontroller.cs
+++UserController.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\controllers\usercontroller.cs
+++VistorTSController.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\controllers\vistortscontroller.cs
+++ErrorLog
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\errorlog\
+++fonts
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\fonts\
+++glyphicons-halflings-regular.eot
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\fonts\glyphicons-halflings-regular.eot
+++glyphicons-halflings-regular.svg
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\fonts\glyphicons-halflings-regular.svg
+++glyphicons-halflings-regular.ttf
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\fonts\glyphicons-halflings-regular.ttf
+++glyphicons-halflings-regular.woff
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\fonts\glyphicons-halflings-regular.woff
+++glyphicons-halflings-regular.woff2
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\fonts\glyphicons-halflings-regular.woff2
+++Models
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\
+++ClassNotification.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\classnotification.cs
+++ModelAppClient.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelappclient.cs
+++ModelApprovalGroup.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelapprovalgroup.cs
+++ModelApprover.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelapprover.cs
+++ModelAruba.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelaruba.cs
+++ModelDepartment.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modeldepartment.cs
+++ModelErecruitment.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelerecruitment.cs
+++ModelExitPermit.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelexitpermit.cs
+++ModelGetTSId.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelgettsid.cs
+++ModelGetTSStatus.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelgettsstatus.cs
+++ModelLinks.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modellinks.cs
+++ModelLogin.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modellogin.cs
+++ModelMenuList.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelmenulist.cs
+++ModelMessage.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelmessage.cs
+++ModelNewsMaster.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelnewsmaster.cs
+++ModelPlant.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelplant.cs
+++ModelQRApi.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelqrapi.cs
+++ModelResponse.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelresponse.cs
+++ModelSSIT.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelssit.cs
+++ModelUser.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modeluser.cs
+++ModelUserPin.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modeluserpin.cs
+++ModelVisitorTS.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelvisitorts.cs
+++ModelVisitorTSLog.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\modelvisitortslog.cs
+++Requester.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\models\requester.cs
+++Scripts
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\scripts\
+++Views
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\views\
+++Eform
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\views\eform\
+++Erecruitment
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\views\erecruitment\
+++ExitPermit
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\views\exitpermit\
+++Home
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\views\home\
+++Master
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\views\master\
+++Shared
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\views\shared\
+++Test
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\views\test\
+++User
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\views\user\
+++VisitorTS
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\views\visitorts\
+++_ViewStart.cshtml
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\views\_viewstart.cshtml
+++Web.config
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\views\web.config
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\web.config
+++ApplicationInsights.config
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\applicationinsights.config
+++favicon.ico
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\favicon.ico
+++Global.asax
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\global.asax
+++packages.config
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\packages.config
+++ActionExitPermit.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\actions\actionexitpermit.cs
+++ActionMaster.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\actions\actionmaster.cs
+++ActionSSIT.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\actions\actionssit.cs
+++ActionUser.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\actions\actionuser.cs
+++ActionVisitor.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\actions\actionvisitor.cs
+++ErecruitmentAction.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\actions\erecruitmentaction.cs
+++BundleConfig.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\app_start\bundleconfig.cs
+++FilterConfig.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\app_start\filterconfig.cs
+++RouteConfig.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\app_start\routeconfig.cs
+++Base64Decoder.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\class\base64decoder.cs
+++Base64Encoder.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\class\base64encoder.cs
+++ClassCookies.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\class\classcookies.cs
+++ClassCreateIssuLog.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\class\classcreateissulog.cs
+++ClassEncryptor.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\class\classencryptor.cs
+++ClassMSSQL.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\class\classmssql.cs
+++ClassSalt.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\class\classsalt.cs
+++ClassString.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\class\classstring.cs
+++ClassSysUtils.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\class\classsysutils.cs
+++ClassWinAuth.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\class\classwinauth.cs
+++bootstrap-theme.css
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\content\bootstrap-theme.css
+++bootstrap-theme.css.map
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\content\bootstrap-theme.css.map
+++bootstrap-theme.min.css
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\content\bootstrap-theme.min.css
+++bootstrap-theme.min.css.map
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\content\bootstrap-theme.min.css.map
+++bootstrap.css
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\content\bootstrap.css
+++bootstrap.css.map
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\content\bootstrap.css.map
+++bootstrap.min.css
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\content\bootstrap.min.css
+++bootstrap.min.css.map
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\content\bootstrap.min.css.map
+++Site.css
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\content\site.css
+++bootstrap.js
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\scripts\bootstrap.js
+++bootstrap.min.js
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\scripts\bootstrap.min.js
+++jquery-3.4.1.intellisense.js
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\scripts\jquery-3.4.1.intellisense.js
+++jquery-3.4.1.js
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\scripts\jquery-3.4.1.js
+++jquery-3.4.1.min.js
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\scripts\jquery-3.4.1.min.js
+++jquery-3.4.1.min.map
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\scripts\jquery-3.4.1.min.map
+++jquery-3.4.1.slim.js
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\scripts\jquery-3.4.1.slim.js
+++jquery-3.4.1.slim.min.js
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\scripts\jquery-3.4.1.slim.min.js
+++jquery-3.4.1.slim.min.map
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\scripts\jquery-3.4.1.slim.min.map
+++jquery.validate-vsdoc.js
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\scripts\jquery.validate-vsdoc.js
+++jquery.validate.js
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\scripts\jquery.validate.js
+++jquery.validate.min.js
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\scripts\jquery.validate.min.js
+++jquery.validate.unobtrusive.js
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\scripts\jquery.validate.unobtrusive.js
+++jquery.validate.unobtrusive.min.js
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\scripts\jquery.validate.unobtrusive.min.js
+++modernizr-2.8.3.js
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\scripts\modernizr-2.8.3.js
+++Index.cshtml
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\views\home\index.cshtml
+++_Layout.cshtml
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\views\shared\_layout.cshtml
+++Error.cshtml
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\views\shared\error.cshtml
+++Global.asax.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\global.asax.cs
+++Web.Debug.config
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\web.debug.config
+++Web.Release.config
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\web.release.config
+++CreateError.cs
+i:{fd50d58b-357c-442f-9a9a-fa6ab61878e9}:c:\users\sbm_deni\desktop\backup deni\d\project deni\pocket-pal\api\class\createerror.cs

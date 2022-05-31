@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="POCKETPAL.Views.HistoryPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    Title="{Binding Title}"
+    ios:Page.UseSafeArea="True"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="True">
+    <ContentPage.Content>
+        <Grid>
+            <WebView
+                x:Name="webpage"
+                Navigated="OnNavigated"
+                Navigating="OnNavigating" />
+
+            <ContentView
+                x:Name="popupLoadingView"
+                Padding="10,0"
+                AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="#C0808080"
+                IsVisible="false">
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Frame CornerRadius="10">
+                        <StackLayout
+                            BackgroundColor="White"
+                            HeightRequest="90"
+                            HorizontalOptions="CenterAndExpand"
+                            Orientation="Vertical"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="200">
+                            <ActivityIndicator
+                                x:Name="activityIndicator"
+                                Margin="0,20,0,0"
+                                HeightRequest="30"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30"
+                                Color="DodgerBlue" />
+                            <Label
+                                x:Name="lblLoadingText"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Text="Loading"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

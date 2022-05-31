@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "fd50d58b-357c-442f-9a9a-fa6ab61878e9": {
+      "ProjectGuid": "fd50d58b-357c-442f-9a9a-fa6ab61878e9",
+      "DisplayName": "POCKETPAL-API",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="POCKETPAL.Views.CheckInNewPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+
+    <Grid>
+        <Image Aspect="Fill" BackgroundColor="gray" />
+        <Grid RowSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.0*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout
+                x:Name="pnl1"
+                Grid.Row="0"
+                BackgroundColor="White">
+                <StackLayout Spacing="0" VerticalOptions="EndAndExpand">
+                    <Label
+                        x:Name="txtGreeting"
+                        Margin="0,10,0,0"
+                        FontAttributes="Bold"
+                        FontSize="35"
+                        HorizontalOptions="Center"
+                        Text="WELCOME !"
+                        TextColor="Black" />
+                    <Label
+                        x:Name="txtName"
+                        Margin="0,10,0,0"
+                        FontAttributes="Bold"
+                        FontSize="Title"
+                        HorizontalOptions="Center"
+                        TextColor="Black" />
+                    <Label
+                        x:Name="txtInOut"
+                        Margin="0,80,0,0"
+                        FontAttributes="Bold"
+                        FontSize="Default"
+                        HorizontalOptions="Center"
+                        Text="CHECK IN DATE AND TIME"
+                        TextColor="Black" />
+                    <Label
+                        x:Name="txtTime"
+                        Margin="0,10,0,0"
+                        FontAttributes="Bold"
+                        FontSize="Default"
+                        HorizontalOptions="Center"
+                        Text="2020-01-01 10:00:00 AM"
+                        TextColor="Black" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout
+                x:Name="pnl2"
+                Grid.Row="0"
+                BackgroundColor="White">
+                <StackLayout Spacing="0" VerticalOptions="EndAndExpand">
+                    <Label
+                        x:Name="txtMealQuestion"
+                        Margin="10,0,10,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="Do you want order a meal for lunch ?"
+                        TextColor="Black" />
+                    <StackLayout
+                        Margin="30"
+                        Orientation="Horizontal"
+                        Spacing="10"
+                        VerticalOptions="EndAndExpand">
+                        <Button
+                            x:Name="btnMealYes"
+                            Clicked="btnMealYesClick"
+                            HorizontalOptions="CenterAndExpand"
+                            Style="{StaticResource ButtonYes}"
+                            Text="YES" />
+                        <Button
+                            x:Name="btnMealNo"
+                            Clicked="btnMealNoClick"
+                            HorizontalOptions="CenterAndExpand"
+                            Style="{StaticResource ButtonNo}"
+                            Text="NO" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout
+                x:Name="pnl3"
+                Grid.Row="0"
+                BackgroundColor="White">
+                <StackLayout Spacing="0" VerticalOptions="EndAndExpand">
+                    <Label
+                        x:Name="txtDateQuestion"
+                        Margin="0,10,0,0"
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="Check Out Day"
+                        TextColor="Black" />
+                    <DatePicker
+                        x:Name="txtDate"
+                        HorizontalOptions="CenterAndExpand"
+                        MinimumDate="01/01/2020"
+                        TextColor="#000000" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout
+                x:Name="pnlx"
+                Grid.Row="1"
+                BackgroundColor="White">
+                <StackLayout
+                    Margin="30"
+                    Orientation="Vertical"
+                    Spacing="10"
+                    VerticalOptions="EndAndExpand">
+                    <Button
+                        x:Name="btnNext"
+                        Clicked="btnNextClick"
+                        Style="{StaticResource DefaultButton2}"
+                        Text="NEXT" />
+                    <Button
+                        x:Name="btnBack"
+                        Clicked="btnBackClick"
+                        Style="{StaticResource DefaultButton2}"
+                        Text="HOME" />
+                </StackLayout>
+            </StackLayout>
+
+        </Grid>
+    </Grid>
+
+
+</ContentPage>

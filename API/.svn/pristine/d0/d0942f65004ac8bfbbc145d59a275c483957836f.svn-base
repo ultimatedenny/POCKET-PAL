@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  For more information on how to configure your ASP.NET application, please visit
+  https://go.microsoft.com/fwlink/?LinkId=301880
+  -->
+<configuration>
+  <appSettings>
+    <add key="webpages:Version" value="3.0.0.0" />
+    <add key="webpages:Enabled" value="false" />
+    <add key="ClientValidationEnabled" value="true" />
+    <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+    <add key="APIName" value="POCKET-PAL API" />
+    <add key="APIVersion" value="1.4" />
+    <add key="APPVersion" value="3.4" />
+    <add key="FCMServerToken" value="AAAA4oPNcpY:APA91bG8gYocWshba2i_NQYKLukPMxHJA9pUsXWKyp6fwtfkSHWBrv6g5Qc-T1U4BqSiBFqi7vQb3tdl7RFTQ7gF97ClhrVJ1dDrNf7HRB1Z46s2Er4Rde2OVf9diEW45cq7kedpBubg" />
+    <add key="FCMSenderID" value="972873888406" />
+  </appSettings>
+  <!--SBM-VMSQLSQA03-->
+  <!--SBM-NB-IT0277\SQLEXPRESS-->
+  <!--<connectionStrings>
+    <add name="POCKETPALCON" connectionString="Data Source=SBM-VMSQLSQA03;Initial Catalog=DBPOCKETPAL;Persist Security Info=True;User ID=VMSWebUsr;Password=vms123" providerName="System.Data.SqlClient" />
+    <add name="MDCDB" connectionString="Data Source=SBM-VMSQLSQA03;Initial Catalog=MDCDB;      Persist Security Info=True;User ID=VMSWebUsr;Password=vms123" providerName="System.Data.SqlClient" />
+    <add name="DBTOKEN" connectionString="Data Source=SBM-VMSQLSQA03;Initial Catalog=DBAPPROVAL; Persist Security Info=True;User ID=VMSWebUsr;Password=vms123" providerName="System.Data.SqlClient" />
+    <add name="DBVISITORMS" connectionString="Data Source=SBM-VMSQLSQA03;Initial Catalog=DBVISITORMS;Persist Security Info=True;User ID=VMSWebUsr;Password=vms123" providerName="System.Data.SqlClient" />
+    <add name="DBVisitorMSEntities" connectionString="metadata=res://*/Models.ExitPermitModel.csdl|res://*/Models.ExitPermitModel.ssdl|res://*/Models.ExitPermitModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=SBM-VMSQLSQA03;initial catalog=DBVisitorMS;persist security info=True;user id=VMSWebUsr;password=vms123;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+  </connectionStrings>-->
+  
+  <connectionStrings>
+    <add name="POCKETPALCON"          connectionString="Data Source=SBM-VMAPPL;Initial Catalog=DBPOCKETPAL;Persist Security Info=True;User ID=VMSWebUsr;Password=vms123" providerName="System.Data.SqlClient" />
+    <add name="MDCDB"                 connectionString="Data Source=SBM-VMAPPL;Initial Catalog=MDCDB;      Persist Security Info=True;User ID=VMSWebUsr;Password=vms123" providerName="System.Data.SqlClient" />
+    <add name="DBTOKEN"               connectionString="Data Source=SBM-VMAPPL;Initial Catalog=DBAPPROVAL; Persist Security Info=True;User ID=VMSWebUsr;Password=vms123" providerName="System.Data.SqlClient" />
+    <add name="DBVISITORMS"           connectionString="Data Source=SBM-VMAPPL;Initial Catalog=DBVISITORMS;Persist Security Info=True;User ID=VMSWebUsr;Password=vms123" providerName="System.Data.SqlClient" />
+    <add name="DBVisitorMSEntities"   connectionString="metadata=res://*/Models.ExitPermitModel.csdl|res://*/Models.ExitPermitModel.ssdl|res://*/Models.ExitPermitModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=SBM-VMAPPL;initial catalog=DBVisitorMS;persist security info=True;user id=VMSWebUsr;password=vms123;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+  </connectionStrings>
+  
+  <system.web>
+    <compilation debug="true" targetFramework="4.8" />
+    <httpRuntime targetFramework="4.8" />
+    <httpModules>
+      <add name="TelemetryCorrelationHttpModule" type="Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule, Microsoft.AspNet.TelemetryCorrelation" />
+      <add name="ApplicationInsightsWebTracking" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" />
+    </httpModules>
+  </system.web>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="Antlr3.Runtime" publicKeyToken="eb42632606e9261f" />
+        <bindingRedirect oldVersion="0.0.0.0-3.5.0.2" newVersion="3.5.0.2" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" />
+        <bindingRedirect oldVersion="0.0.0.0-12.0.0.0" newVersion="12.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Optimization" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0-1.1.0.0" newVersion="1.1.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="WebGrease" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="0.0.0.0-1.6.5135.21930" newVersion="1.6.5135.21930" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0-5.2.7.0" newVersion="5.2.7.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Memory" publicKeyToken="cc7b13ffcd2ddd51" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-4.0.1.1" newVersion="4.0.1.1" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+  <system.codedom>
+    <compilers>
+      <compiler language="c#;cs;csharp" extension=".cs" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:1659;1699;1701" />
+      <compiler language="vb;vbs;visualbasic;vbscript" extension=".vb" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.VBCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:41008 /define:_MYTYPE=\&quot;Web\&quot; /optionInfer+" />
+    </compilers>
+  </system.codedom>
+  <system.webServer>
+    <validation validateIntegratedModeConfiguration="false" />
+    <modules>
+      <remove name="TelemetryCorrelationHttpModule" />
+      <add name="TelemetryCorrelationHttpModule" type="Microsoft.AspNet.TelemetryCorrelation.TelemetryCorrelationHttpModule, Microsoft.AspNet.TelemetryCorrelation" preCondition="managedHandler" />
+      <remove name="ApplicationInsightsWebTracking" />
+      <add name="ApplicationInsightsWebTracking" type="Microsoft.ApplicationInsights.Web.ApplicationInsightsHttpModule, Microsoft.AI.Web" preCondition="managedHandler" />
+    </modules>
+  </system.webServer>
+</configuration>

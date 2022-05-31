@@ -1,0 +1,286 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.DirectoryServices;
+using System.DirectoryServices.AccountManagement;
+using System.Configuration;
+using System.Data;
+using System.Text;
+using POCKETPAL_API.Class;
+using POCKETPAL_API.Models;
+
+namespace POCKETPAL_API.Actions
+{
+    public class ActionVisitor
+    {
+        StringBuilder sb;
+        DataTable dt;
+        long num;
+        public string ConnectionDB = ConfigurationManager.ConnectionStrings["DBVISITORMS"].ToString();
+        public string CONNECTIONPP = ConfigurationManager.ConnectionStrings["POCKETPALCON"].ToString();
+        public PP<string> AddTeamShimano(ModelVisitorTS NewData)
+        {
+            string query = @"
+            BEGIN
+            DECLARE 
+            @maxId int
+            set @MaxId = (select isnull (max(cast(Id as int))+1,1) from DBVisitorMS.dbo.VisitorTS)
+            INSERT INTO DBVisitorMS.dbo.VisitorTS
+                       ([Id]
+                       ,[Name]
+                       ,[EmployeeNo]
+                       ,[Department]
+                       ,[ShimanoBadge]
+                       ,[Plant]
+                       ,[Email]
+                       ,[Phone]
+                       ,[Photo]
+                       ,[CreUser]
+                       ,[CreDate])
+                 VALUES
+                       (@MaxId
+                       ,'" + NewData.Name + @"'
+                       ,'" + NewData.EmployeeNo + @"'
+                       ,'" + NewData.Department + @"'
+                       ,'" + NewData.ShimanoBadge + @"'
+                       ,'" + NewData.Plant + @"'
+                       ,'" + NewData.Email + @"'
+                       ,'" + NewData.Phone + @"'
+                       ,'" + NewData.Photoes + @"'
+                       ,'" + NewData.CreUser + @"'
+                       ,GETDATE())
+            SELECT 'SUCCESS' as isSuccess, 'Insert Successfully' as message
+            END";
+            using (ClassMSSQL s = new ClassMSSQL())
+            {
+                dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+            }
+            return dt.OneRowdtToResult();
+        }
+        public PP<string> CheckInOut(ModelVisitorTSLog NewData)
+        {
+            string query = @"IF EXISTS (select LogId, TSVisitorId from DBVisitorMS.dbo.VisitLog_TS where LogId = '" + NewData.LogId + "' AND TIMEIN IS NOT NULL AND TIMEOUT IS NULL) " +
+                "           BEGIN UPDATE VisitLog_TS SET [Status] = '" + NewData.Status + @"', TimeOut = '" + NewData.TimeOut + @"'WHERE LogId like '" + NewData.LogId +
+                            @"'SELECT 'SUCCESS' as isSuccess, 'Update Successfully' as message END ELSE BEGIN DECLARE @maxId int set @MaxId = (select isnull (max(cast(LogId as int))+1,1) from DBVisitorMS.dbo.VisitLog_TS)
+                            INSERT INTO [dbo].[VisitLog_TS](LogId,[TSVisitorId],[HostName],[HostDepartment],[TimeIn],[DateVisit],[NeedLunch],[Status],[Plant],[NeedStay],[DateOfEnd])VALUES(@MaxId," + NewData.TSVisitorId + @",'" + NewData.HostName + @"','" + NewData.HostDepartment + @"','" + NewData.TimeIn + @"','" + NewData.DateVisit + @"','" + NewData.NeedLunch + @"','" + NewData.Status + @"','" + NewData.Plant + @"','" + NewData.NeedStay + @"','" + NewData.DateOfEnd + @"') 
+                            SELECT 'SUCCESS' as isSuccess, 'Insert Successfully' as message END";
+            using (ClassMSSQL s = new ClassMSSQL())
+            {
+                dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+            }
+            return dt.OneRowdtToResult();
+        }
+        public PP<string> CheckInSameDay(ModelVisitorTSLog NewData)
+        {
+            string query = @"
+            BEGIN DECLARE @maxId int set @MaxId = (select isnull (max(cast(LogId as int))+1,1) from DBVisitorMS.dbo.VisitLog_TS)
+            INSERT INTO [dbo].[VisitLog_TS]
+            (LogId,[TSVisitorId],[HostName],[HostDepartment],[TimeIn],[DateVisit],[NeedLunch],[Status],[Plant],[NeedStay],[DateOfEnd])
+            VALUES(@MaxId," + NewData.TSVisitorId + @",
+            '" + NewData.HostName + @"',
+            '" + NewData.HostDepartment + @"',
+            '" + NewData.TimeIn + @"',
+            '" + NewData.DateVisit + @"',
+            '" + NewData.NeedLunch + @"',
+            '" + NewData.Status + @"',
+            '" + NewData.Plant + @"',
+            '" + NewData.NeedStay + @"',
+            '" + NewData.DateOfEnd + @"') 
+            SELECT 'SUCCESS' as isSuccess, 'Insert Successfully' as message END";
+            using (ClassMSSQL s = new ClassMSSQL())
+            {
+                dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+            }
+            return dt.OneRowdtToResult();
+        }
+        public List<ModelGetTSId> GetTSId(string UseNam)
+        {
+            DataTable dt = new DataTable();
+            string query = @"IF EXISTS (SELECT * FROM DBVisitorMS.dbo.VISITORTS WHERE NAME LIKE '%" + UseNam + @"%')
+            BEGIN 
+            SELECT ID, [NAME], EMPLOYEENO, DEPARTMENT, PLANT, SHIMANOBADGE FROM DBVisitorMS.dbo.VISITORTS
+            WHERE NAME LIKE '%" + UseNam + @"%'
+            END
+            ELSE
+            SELECT ID = 0, [NAME] = 0, EMPLOYEENO = 0, DEPARTMENT = 0, PLANT =0, SHIMANOBADGE = 0";
+            using (var sql = new ClassMSSQL())
+            {
+                dt = sql.ExecDTQuery(ConnectionDB, query, null, null, false);
+            }
+            var _GetTSId = (from rw in dt.AsEnumerable()
+                            select new ModelGetTSId
+                            {
+                                ID = rw["ID"].ToString(),
+                                NAME = rw["NAME"].ToString(),
+                                EMPLOYEENO = rw["EMPLOYEENO"].ToString(),
+                                DEPARTMENT = rw["DEPARTMENT"].ToString(),
+                                PLANT = rw["PLANT"].ToString(),
+                                SHIMANOBADGE = rw["SHIMANOBADGE"].ToString(),
+                            }).ToList();
+            return _GetTSId;
+        }
+        public List<ModelGetTSStatus> GetTSStatus(string TSVisitorId)
+        {
+            DataTable dt = new DataTable();
+            string query = @"IF EXISTS
+            (SELECT * FROM DBVisitorMS.dbo.VisitLog_TS WHERE [TSVisitorId] Like '%" + TSVisitorId + @"%' AND 
+            LogId=(SELECT max(LogId) FROM DBVisitorMS.dbo.VisitLog_TS)) 
+            BEGIN select LogId, TimeIn, [TimeOut], DateVisit, NeedLunch, NeedStay, DateOfEnd, Status from DBVisitorMS.dbo.VisitLog_TS 
+            where [TSVisitorId] Like '%" + TSVisitorId + @"%' AND 
+            LogId=(SELECT max(LogId) FROM DBVisitorMS.dbo.VisitLog_TS) END 
+            ELSE 
+            BEGIN 
+            SELECT LogId = 0, TimeIn = 0, [TimeOut] = 0,NeedLunch = 0, NeedStay = 0 ,
+            DateVisit = '2020-01-01 00:00:00.000', 
+            DateOfEnd = '2020-01-01 00:00:00.000',
+            Status = 0
+            END";
+            using (var sql = new ClassMSSQL())
+            {
+                dt = sql.ExecDTQuery(ConnectionDB, query, null, null, false);
+            }
+
+            var _GetTSTime = (from rw in dt.AsEnumerable()
+                              select new ModelGetTSStatus
+                              {
+                                  LOGID = rw["LOGID"].ToString(),
+                                  TIMEIN = rw["TIMEIN"].ToString(),
+                                  TIMEOUT = rw["TIMEOUT"].ToString(),
+                                  DATEVISIT = rw["DATEVISIT"].ToString(),
+                                  NEEDLUNCH = rw["NEEDLUNCH"].ToString(),
+                                  NEEDSTAY = rw["NEEDSTAY"].ToString(),
+                                  DATEOFEND = rw["DATEOFEND"].ToString(),
+                                  STATUS = rw["STATUS"].ToString(),
+                              }).ToList();
+            return _GetTSTime;
+        }
+        public List<ModelQRApi> QRCheck(string Client, string UseID, string UseNam, string InOut)
+        {
+            string query = @"IF EXISTS(SELECT * FROM DBVisitorMS.dbo.QRApi where QRCode = '" + Client + @"')
+            BEGIN 
+				UPDATE QRApi SET UseID = '" + UseID + @"', UseNam = '" + UseNam + @"', [In/Out] = '" + InOut + @"', IsUsed = '1' where QRCode = '" + Client + @"'
+				SELECT * FROM DBVisitorMS.dbo.QRApi where QRCode = '" + Client + @"'
+            END
+            ELSE
+            BEGIN
+				SELECT * FROM DBVisitorMS.dbo.QRApi where QRCode = 'X'
+            END";
+            using (ClassMSSQL s = new ClassMSSQL())
+            {
+                dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+            }
+            var _QRList = (from rw in dt.AsEnumerable()
+                           select new ModelQRApi
+                           {
+                               QRCode = rw["QRCode"].ToString(),
+                               Date = DateTime.Parse(rw["Date"].ToString()).ToString(),
+                               Time = TimeSpan.Parse(rw["Time"].ToString()).ToString(),
+                               UseID = rw["UseID"].ToString(),
+                               UseNam = rw["UseNam"].ToString(),
+                               InOut = rw["In/Out"].ToString(),
+                               //IsUsed = bool.Parse(rw["IsUsed"].ToString()).ToString()
+                           }).ToList();
+            return _QRList;
+        }
+
+
+
+        public List<ModelQRApi> PP_POST_QR_VMS(string QRCODE)
+        {
+            string Date = DateTime.Now.ToString("yyyy-MM-dd");
+            string Time = DateTime.Now.ToString("HH:mm:ss");
+            string query = @"EXEC [PP_POST_QR_VMS] '"+ QRCODE + "','" + Date + "','" + Time + "'";
+            using (ClassMSSQL s = new ClassMSSQL())
+            {
+                dt = s.ExecDTQuery(CONNECTIONPP, query, null, null, false);
+            }
+            var data = (from row in dt.AsEnumerable()
+                           select new ModelQRApi
+                           {
+                               QRCode       = row["QRCode"].ToString(),
+                               Date         = DateTime.Parse(row["Date"].ToString()).ToString(),
+                               Time         = TimeSpan.Parse(row["Time"].ToString()).ToString(),
+                               UseID        = row["UseID"].ToString(),
+                               UseNam       = row["UseNam"].ToString(),
+                               InOut        = row["In/Out"].ToString(),
+                               IsUsed       = bool.Parse(row["IsUsed"].ToString()).ToString()
+                           }).ToList();
+            return data;
+        }
+        public List<ModelResponse> PP_DELETE_QR_VMS(string QRCode)
+        {
+            string query = @"EXEC [PP_DELETE_QR_VMS] '" + QRCode + "'";
+            using (ClassMSSQL s = new ClassMSSQL())
+            {
+                dt = s.ExecDTQuery(CONNECTIONPP, query, null, null, false);
+            }
+            var data = (from rw in dt.AsEnumerable()
+                        select new ModelResponse
+                        {
+                            Message = rw["MESSAGE"].ToString(),
+                            Success = rw["SUCCESS"].ToBoolean(),
+                        }).ToList();
+            return data;
+        }
+
+
+
+        public List<ModelQRApi> getLoginInfo(string QRCode)
+        {
+            string query = @"IF EXISTS(SELECT * FROM DBVisitorMS.dbo.QRApi where QRCode = '" + QRCode + @"' and IsUsed = 1)
+            BEGIN 
+				SELECT * FROM DBVisitorMS.dbo.QRApi where QRCode = '" + QRCode + @"'
+            END
+            ELSE
+            BEGIN
+				SELECT QrCode = '0', Date = '1990-01-01', Time = '00:00', UseID = '0', UseNam = 0, [In/Out] = '-', isUsed = 0 from DBVisitorMS.dbo.QRApi
+            END";
+            using (ClassMSSQL s = new ClassMSSQL())
+            {
+                dt = s.ExecDTQuery(ConnectionDB, query, null, null, false);
+            }
+            var _QRList = (from rw in dt.AsEnumerable()
+                           select new ModelQRApi
+                           {
+                               QRCode = rw["QRCode"].ToString(),
+                               Date = DateTime.Parse(rw["Date"].ToString()).ToString(),
+                               Time = TimeSpan.Parse(rw["Time"].ToString()).ToString(),
+                               UseID = rw["UseID"].ToString(),
+                               UseNam = rw["UseNam"].ToString(),
+                               InOut = rw["In/Out"].ToString(),
+                               //IsUsed = bool.Parse(rw["IsUsed"].ToString()).ToString()
+                           }).ToList();
+            return _QRList;
+        }
+
+
+
+
+
+        public List<Result> PostSSIDTemp(Root Result3)
+        {
+            string query = @"spPostSSIDTemp";
+            using (ClassMSSQL s = new ClassMSSQL())
+            {
+                dt = s.ExecDTQuery(CONNECTIONPP, query, null, null, false);
+            }
+            var _Reslut = (from rw in dt.AsEnumerable()
+                           select new Result
+                           {
+                               _Result = rw["Success"].ToString(),
+                           }).ToList();
+            return _Reslut;
+        }
+
+
+        public List<Result> GetSSIDTempDuration()
+        {
+            return null;    
+        }
+        public class Result
+        {
+            public string _Result { get; set; }
+        }
+    }
+}

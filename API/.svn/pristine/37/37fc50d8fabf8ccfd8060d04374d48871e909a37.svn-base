@@ -1,0 +1,199 @@
+﻿using Newtonsoft.Json;
+using POCKETPAL_API.Actions;
+using POCKETPAL_API.Class;
+using POCKETPAL_API.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Web;
+using System.Web.Configuration;
+using System.Web.Mvc;
+using System.Web.Script.Serialization;
+
+namespace POCKETPAL_API.Controllers
+{
+    public class VisitorTSController : Controller
+    {
+        public string finalString;
+        ActionVisitor visAct = new ActionVisitor();
+        public ActionResult Index()
+        {
+            string APIName = WebConfigurationManager.AppSettings["APIName"];
+            string APIVersion = WebConfigurationManager.AppSettings["APIVersion"];
+            string Final = APIName + " - " + APIVersion;
+            return Json(Final, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult AddTeamShimano(ModelVisitorTS NewData, string Name, string EmployeeNo, string Department, string ShimanoBadge, string Plant, string Email, string Phone, string Photoes)
+        {
+            NewData.Name = Name;
+            NewData.EmployeeNo = EmployeeNo;
+            NewData.Department = Department;
+            NewData.ShimanoBadge = ShimanoBadge;
+            NewData.Plant = Plant;
+            NewData.Email = Email;
+            NewData.Phone = Phone;
+            NewData.Photoes = Photoes;
+            NewData.CreUser = "POCKET PAL API";
+            return Json(visAct.AddTeamShimano(NewData), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult CheckIn(ModelVisitorTSLog NewData, int TSVisitorId, string TimeIn, string NeedLunch, string Plant, string NeedStay, string DateOfEnd)
+        {
+            NewData.TSVisitorId = TSVisitorId;
+            NewData.HostName = "POCKET PAL API";
+            NewData.HostDepartment = "IT";
+            NewData.TimeIn = TimeIn;
+            NewData.NeedLunch = Convert.ToBoolean(NeedLunch);
+            NewData.Status = "CHECKIN";
+            NewData.Plant = Plant;
+            NewData.NeedStay = Convert.ToBoolean(NeedStay);
+            NewData.DateOfEnd = DateOfEnd;
+
+            return Json(visAct.CheckInOut(NewData), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult CheckOut(ModelVisitorTSLog NewData, string TimeOut, string LogId)
+        {
+            NewData.LogId = Convert.ToInt32(LogId);
+            NewData.TimeOut = TimeOut;
+            NewData.Status = "CHECKOUT";
+            return Json(visAct.CheckInOut(NewData), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult CheckInSameDay(ModelVisitorTSLog NewData, int TSVisitorId, string HostName, string HostDepartment, string TimeIn, string TimeOut, bool NeedLunch, string Status, string Plant, bool NeedStay, string DateOfEnd)
+        {
+            NewData.TSVisitorId = TSVisitorId;
+            NewData.HostName = "POCKET PAL API";
+            NewData.HostDepartment = "IT";
+            NewData.TimeIn = TimeIn;
+            NewData.NeedLunch = NeedLunch;
+            NewData.Status = "CHECKIN";
+            NewData.Plant = Plant;
+            NewData.NeedStay = NeedStay;
+            NewData.DateOfEnd = DateOfEnd;
+
+            return Json(visAct.CheckInSameDay(NewData), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetTSId(string UseNam)
+        {
+            return Json(visAct.GetTSId(UseNam), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetTSStatus(string TSVisitorId)
+        {
+            return Json(visAct.GetTSStatus(TSVisitorId), JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult QRCheck(string Client, string UseID, string UseNam, string InOut)
+        {
+            return Json(visAct.QRCheck(Client, UseID, UseNam, InOut), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult PP_POST_QR_VMS()
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var stringChars = new char[16];
+            var random = new Random();
+            string QRCODE = "";
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+            string codeRAW = new String(stringChars);
+            QRCODE = "QR-VMS" + codeRAW.ToUpper();
+            return Json(visAct.PP_POST_QR_VMS(QRCODE), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult getLoginInfo(string QRCode)
+        {
+            return Json(visAct.getLoginInfo(QRCode), JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult PP_DELETE_QR_VMS(string QRCode)
+        {
+            return Json(visAct.PP_DELETE_QR_VMS(QRCode), JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult PostSSIDTemp(Root Result3)
+        {
+            return Json(visAct.PostSSIDTemp(Result3), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetSSIDTempDuration()
+        {
+            return Json(visAct.GetSSIDTempDuration(), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public async System.Threading.Tasks.Task<ActionResult> LoginArubaTemp()
+        {
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = (requestMessage, certificate, chain, policyErrors) => true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            HttpClient client = new HttpClient(handler);
+
+            List<Root> model = new List<Root>();
+            string url = "https://172.18.102.208:4343/v1/api/login" + "?username=admin&password=admin123";
+            HttpResponseMessage response = new HttpResponseMessage();
+            response = await client.GetAsync(url);
+
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var stringChars = new char[4];
+            var random = new Random();
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+            var finalString = new String(stringChars);
+
+            int digits = new Random().Next(100000, 999999);
+            string username = "GUEST"+ finalString;
+            string password = digits.ToString();
+
+            var regdate = DateTime.Now.ToString("MM/dd/yyyy");
+            var regtime = DateTime.Now.ToString("HH:mm");
+            var enddate = regdate;
+            var endtime = DateTime.Now.AddMinutes(5).ToString("HH:mm");
+
+            if (response.IsSuccessStatusCode)
+            {
+                string Result = await response.Content.ReadAsStringAsync();
+                JavaScriptSerializer jsonSerializer = new JavaScriptSerializer();
+                Root sub = JsonConvert.DeserializeObject<Root>(Result);
+                string TokenAruba = sub._global_result.XCsrfToken.ToString();
+                using (var request = new HttpRequestMessage(new HttpMethod("POST"), "https://172.18.102.208:4343/v1/configuration/object/userdb_guest_add?config_path=%2Fmm"))
+                {
+                    request.Headers.TryAddWithoutValidation("Accept", "application/json");
+                    request.Headers.TryAddWithoutValidation("X-CSRF-Token", TokenAruba);
+
+                    request.Content = new StringContent("{ \"user-email\": \"deni.andrean@sbm-shimano.com.sg\", \"mode\": false, \"g_fullname\": \""+ finalString + "\", \"g_company\": \"Shimano\", \"g_phone\": \"082171154449\", \"g_comments\": \"\", \"sp_name\": \"\", \"sp_email\": \"\", \"sp_fullname\": \"\", \"sp_dept\": \"\", \"opt1\": \"\", \"opt2\": \"\", \"opt3\": \"\", \"opt4\": \"\", \"start_day\": \""+ regdate + "\", \"start_time\": \""+ regtime + "\", \"expiry\": true, \"expmins\": \"\", \"expday\": \""+ enddate + "\", \"exptime\": \""+ endtime + "\", \"remote_ip\": \"\", \"name\": \""+ username + "\", \"passwd\": \""+ password + "\" }");
+                    request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json");
+
+                    var response1 = await client.SendAsync(request);
+
+                    if (response1.IsSuccessStatusCode)
+                    {
+                        var Result2 = await response1.Content.ReadAsStringAsync();
+                        Root Result3 = JsonConvert.DeserializeObject<Root>(Result2);
+                        //var final = "Username:" + sub2.userdb_guest_add.name + " || " + "Password:" + sub2.userdb_guest_add.passwd + " || " +
+                        //            "Register Date:" + sub2.userdb_guest_add.start_day + " || " + "Register Time:" + sub2.userdb_guest_add.start_time + " || " +
+                        //            "End Date:" + sub2.userdb_guest_add.expday + " || " + "End Time:" + sub2.userdb_guest_add.exptime;
+                        //PostSSIDTemp(Result3);
+                        return Json(Result3, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(ClassString.GENERATEARUBAFAILED.ToString(), JsonRequestBehavior.AllowGet);
+                    }
+                }
+            }
+            else
+            {
+                return Json(ClassString.LOGINARUBAFAILED.ToString(), JsonRequestBehavior.AllowGet);
+            }
+        }
+    }
+}

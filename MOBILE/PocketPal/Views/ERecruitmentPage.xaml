@@ -1,0 +1,180 @@
+﻿<ContentPage
+    x:Class="POCKETPAL.Views.ErecruitmentPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:renderers="clr-namespace:POCKETPAL.Classes"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
+    Title="E-Recruitment"
+    iOsSpecific:Page.UseSafeArea="True"
+    BackgroundColor="{StaticResource AppBackgroundColor}"
+    Shell.NavBarIsVisible="True"
+    Shell.FlyoutBehavior="Disabled">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource AppBackgroundColor}">
+            <Frame Padding="10" BackgroundColor="White">
+                <StackLayout>
+                    <yummy:PancakeView
+                        x:Name="BatchComp_View"
+                        Padding="0,0,0,0"
+                        BackgroundColor="{StaticResource AppBackgroundColor}"
+                        CornerRadius="5"
+                        HeightRequest="45">
+
+                        <renderers:BorderlessEntry
+                            x:Name="BatchComp_TextBox"
+                            ClearButtonVisibility="WhileEditing"
+                            FontSize="15"
+                            IsPassword="False"
+                            Placeholder="Search Batch (eg:JA-001-002)"
+                            PlaceholderColor="#99A1B3"
+                            TextChanged="OnSearch"
+                            TextColor="#484848" />
+
+                    </yummy:PancakeView>
+                    <yummy:PancakeView
+                        Padding="0,0,0,0"
+                        BackgroundColor="{StaticResource AppBackgroundColor}"
+                        CornerRadius="5"
+                        HeightRequest="45">
+                        <Picker
+                            x:Name="BatchPicker"
+                            Title="Batch Status"
+                            BackgroundColor="Transparent"
+                            FontSize="15"
+                            SelectedIndexChanged="OnSearch"
+                            TextColor="Black"
+                            TitleColor="#99A1B3" />
+                    </yummy:PancakeView>
+
+                </StackLayout>
+            </Frame>
+            <RefreshView 
+                x:Name="RefreshBatch"
+                Refreshing="RefBatch"
+                Command="{Binding RefreshCommand}">
+                <CollectionView
+                    x:Name="CollectionViewBatch"
+                    BackgroundColor="{StaticResource AppBackgroundColor}"   
+                    Margin="0,0,0,0">
+
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout x:Name="GridReceive" Orientation="Vertical" Span="1" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <yummy:PancakeView CornerRadius="0" VerticalOptions="Start" BackgroundColor="#FFFFFF" IsClippedToBounds="True" Margin="0">
+                                <SwipeView HeightRequest="90" Margin="5,5,5,5">
+                                    <SwipeView.RightItems>
+                                        <SwipeItems Mode="Reveal">
+
+                                            <SwipeItemView Invoked="DetailsInvoked" CommandParameter="{Binding Combined2}">
+                                                <Grid WidthRequest="70" BackgroundColor="Transparent">
+                                                    <BoxView Style="{StaticResource SwipeRight}"/>
+                                                    <Image Source="round_visibility_white_48.png" Style="{StaticResource SwipeItemIconStyle}"/>
+                                                    <Label Text="Details"  Style="{StaticResource SwipeItemTextStyle}"/>
+                                                </Grid>
+                                            </SwipeItemView>
+
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+
+                                    <SwipeView.LeftItems>
+                                        <SwipeItems Mode="Reveal">
+
+                                            <SwipeItemView Invoked="ConfirmInvoked" CommandParameter="{Binding BatchComp}">
+                                                <Grid WidthRequest="70" BackgroundColor="Transparent">
+                                                    <BoxView Style="{StaticResource SwipeLeft}"/>
+                                                    <Image Source="round_done_white_48.png" Style="{StaticResource SwipeItemIconStyle}"/>
+                                                    <Label Text="Confirm"  Style="{StaticResource SwipeItemTextStyle}"/>
+                                                </Grid>
+                                            </SwipeItemView>
+
+                                        </SwipeItems>
+                                    </SwipeView.LeftItems>
+
+                                    <SwipeView.Content>
+                                        <Grid>
+                                            <BoxView BackgroundColor ="{Binding ColorStatus}" HorizontalOptions="Start" VerticalOptions="FillAndExpand" WidthRequest="10"/>
+                                            <Frame VerticalOptions="FillAndExpand" Style="{StaticResource FrameStyle}">
+                                                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="0" Padding="0,0,5,5" BackgroundColor="#F4F4F4">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*" />
+                                                        <RowDefinition Height="*" />
+                                                    </Grid.RowDefinitions>
+                                                    <Label 
+                                                        x:Name="BatchNo"         
+                                                        Grid.Column="0" 
+                                                        Grid.Row="0" 
+                                                        Text="{Binding BatchComp}"    
+                                                        Style="{StaticResource DefaultLabel1}"
+                                                        HorizontalTextAlignment="Start" 
+                                                        VerticalTextAlignment="Center"  
+                                                        HorizontalOptions="FillAndExpand" 
+                                                        VerticalOptions="FillAndExpand" />
+                                                    <yummy:PancakeView
+                                    Grid.Column="0" 
+                                    Grid.Row="1"
+                                    Padding="5"
+                                    Margin="10,0,0,0"
+                                    BackgroundColor="{Binding ColorStatus}"
+                                    CornerRadius="0"
+                                    HeightRequest="16"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="CenterAndExpand">
+                                                        <Label
+                                        FontAttributes="Bold"
+                                        FontSize="10"
+                                        Text="{Binding StatusBatch}"/>
+                                                    </yummy:PancakeView>
+                                                    <Label x:Name="TotalCandidate"  
+                                       Grid.Column="1" Grid.Row="0" 
+                                       Text="{Binding TotalCandidate, StringFormat='Total Candidate: {0:D} '}" 
+                                       Style="{StaticResource DefaultLabel2}"     
+                                       HorizontalTextAlignment="End"   
+                                       VerticalTextAlignment="Center"  
+                                       HorizontalOptions="FillAndExpand" 
+                                       VerticalOptions="FillAndExpand" />
+
+                                                    <StackLayout Grid.Column="1" Grid.Row="1" Spacing="0">
+                                                        <Label x:Name="ReqDate"         
+                                       Text="{Binding RequestDate, StringFormat='Request Date: {0:D} '}" 
+                                       Style="{StaticResource DefaultLabel2}"     
+                                       HorizontalTextAlignment="End"   
+                                       VerticalTextAlignment="Center"  
+                                       HorizontalOptions="FillAndExpand" 
+                                       VerticalOptions="FillAndExpand" />
+                                                        <Label x:Name="InvDate"         
+                                       Text="{Binding InvitationDate, StringFormat='Invitation Date: {0:D} '}" 
+                                       Style="{StaticResource DefaultLabel2}"     
+                                       HorizontalTextAlignment="End"   
+                                       VerticalTextAlignment="Center"  
+                                       HorizontalOptions="FillAndExpand" 
+                                       VerticalOptions="FillAndExpand" />
+                                                    </StackLayout>
+
+
+                                                </Grid>
+                                            </Frame>
+                                            <ScrollView IsEnabled="False" HorizontalOptions="End">
+                                            </ScrollView>
+                                        </Grid>
+                                    </SwipeView.Content>
+                                </SwipeView>
+                            </yummy:PancakeView>
+
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

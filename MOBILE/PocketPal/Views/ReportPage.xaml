@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="POCKETPAL.Views.ReportPage"
+             xmlns:viewmodels="clr-namespace:POCKETPAL.Models"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             BackgroundColor="{StaticResource AppBackgroundColor}"
+             Title="Report">
+    <ContentPage.BindingContext>
+        <viewmodels:ReportModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Transparent">
+            <ScrollView >
+                <StackLayout Padding="10" Spacing="3">
+
+                    <Label IsVisible="TRUE" TextColor="Black" Text="Recipients" FontAttributes="Bold" Margin="0,0,0,0" />
+                    <Label IsVisible="TRUE" TextColor="Black" Text="To:" />
+                    <yummy:PancakeView
+                                Padding="0,0,0,0"
+                                BackgroundColor="#tr"
+                                CornerRadius="5">
+                        <Entry x:Name="TO_TextBox"
+                                BackgroundColor="White"
+                                Keyboard="Chat"  
+                                PlaceholderColor="#99A1B3" 
+                                TextColor="Black" 
+                                Placeholder=""
+                                IsReadOnly="True"/>
+                    </yummy:PancakeView>
+                    <Label IsVisible="TRUE" TextColor="Black" Text="CC:" />
+                    <yummy:PancakeView
+                                Padding="0,0,0,0"
+                                BackgroundColor="#tr"
+                                CornerRadius="5">
+                        <Entry x:Name="CC_TextBox"
+                                BackgroundColor="White"
+                                Keyboard="Chat"  
+                                PlaceholderColor="#99A1B3" 
+                                TextColor="Black" 
+                                Placeholder=""
+                                IsReadOnly="True"/>
+                    </yummy:PancakeView>
+
+                    <Label IsVisible="TRUE" TextColor="Black" Text="BCC:" />
+                    <yummy:PancakeView
+                                Padding="0,0,0,0"
+                                BackgroundColor="#tr"
+                                CornerRadius="5">
+                        <Entry x:Name="BCC_TextBox"
+                                BackgroundColor="White"
+                                Keyboard="Chat"  
+                                PlaceholderColor="#99A1B3" 
+                                TextColor="Black" 
+                                Placeholder=""
+                                IsReadOnly="True"/>
+                    </yummy:PancakeView>
+
+                    <Label TextColor="Black" Text="Mail" FontAttributes="Bold" Margin="0,0,0,0" />
+                    <Label IsVisible="TRUE" TextColor="Black" Text="Subject:" />
+                    <yummy:PancakeView
+                                Padding="0,0,0,0"
+                                BackgroundColor="#tr"
+                                CornerRadius="5">
+                        <Entry x:Name="SUBJECT_TextBox"
+                                BackgroundColor="White"
+                                Keyboard="Chat"  
+                                PlaceholderColor="#99A1B3" 
+                                TextColor="Black" 
+                                Placeholder=""/>
+                    </yummy:PancakeView>
+                    
+                    <Label IsVisible="TRUE" TextColor="Black" Text="Body" />
+                    <yummy:PancakeView
+                                Padding="0,0,0,0"
+                                BackgroundColor="#tr"
+                                CornerRadius="5"
+                                HeightRequest="165"
+                                x:Name="usernameSignup_view">
+                        <Editor x:Name="BODY_TextBox"
+                                BackgroundColor="White"
+                                Keyboard="Chat"  
+                                AutoSize="TextChanges" 
+                                PlaceholderColor="#99A1B3" 
+                                TextColor="Black" 
+                                Placeholder=""/>
+                    </yummy:PancakeView>
+
+                    <Label TextColor="Black" Text="please help us to improve by giving us feedback of this app" TextTransform="Uppercase" />
+                    <Label IsVisible="false" Text="Attachment" FontAttributes="Bold" Margin="0,6,0,0" />
+
+                    <Button
+                            FontAttributes="Bold"
+                            Style="{StaticResource DefaultButton}"
+                            Text="Report Bug"
+                            VerticalOptions="CenterAndExpand" 
+                            Clicked="SendReport"
+                            x:Name="BtnSend"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

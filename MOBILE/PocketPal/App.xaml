@@ -1,0 +1,816 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="POCKETPAL.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="AppBackgroundColor">#F4F4F4</Color>
+            <Color x:Key="GREEN10">#E1F7E8</Color>
+            <Color x:Key="GREEN40">#51C273</Color>
+            <Color x:Key="GREEN50">#31B057</Color>
+            <Color x:Key="GREEN60">#1C9440</Color>
+            <Color x:Key="GREEN80">#0F752E</Color>
+            <Color x:Key="ORANGE10">#FFD7D9</Color>
+            <Color x:Key="ORANGE40">#FF9A5C</Color>
+            <Color x:Key="ORANGE50">#FC8338</Color>
+            <Color x:Key="ORANGE60">#E6732C</Color>
+            <Color x:Key="ORANGE80">#B85518</Color>
+            <Color x:Key="BLUE10">#DBEBFF</Color>
+            <Color x:Key="BLUE40">#5BA0F5</Color>
+            <Color x:Key="BLUE50">#388BF2</Color>
+            <Color x:Key="BLUE60">#216BC4</Color>
+            <Color x:Key="BLUE80">#11D496</Color>
+            <Color x:Key="RED10">#FCE3E4</Color>
+            <Color x:Key="RED40">#ED646A</Color>
+            <Color x:Key="RED50">#E52A34</Color>
+            <Color x:Key="RED60">#CF212A</Color>
+            <Color x:Key="RED80">#A1131A</Color>
+            <Color x:Key="YELL10">#FFF0D1</Color>
+            <Color x:Key="YELL40">#FCC047</Color>
+            <Color x:Key="YELL50">#FBAF18</Color>
+            <Color x:Key="YELL60">#E39E14</Color>
+            <Color x:Key="YELL80">#C98C10</Color>
+            <Color x:Key="BLACK100">#25282B</Color>
+            <Color x:Key="BLACK80">#52575C</Color>
+            <Color x:Key="BLACK60">#A0A4A8</Color>
+            <Color x:Key="BLACK40">#CACCCF</Color>
+            <Color x:Key="BLACK10">#E8E8E8</Color>
+            <Color x:Key="BLACK05">#FAFAFA</Color>
+
+            <Style x:Key="Menu_BlackLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="Browse_BlackLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="17" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="WhiteLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="HomeCard_TitleWhiteLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="HomeCard_SubtitleWhiteLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="13" />
+            </Style>
+            <Style x:Key="HomeCard_DetailsWhiteLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="11" />
+            </Style>
+
+
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="Padding" Value="0,0,0,0" />
+                <Setter Property="Margin" Value="10, 0, 0, 0" />
+            </Style>
+
+            <Style x:Key="FrameStyle2" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{StaticResource BLACK40}" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="Padding" Value="0,0,0,0" />
+                <Setter Property="Margin" Value="0, 0, 0, 0" />
+            </Style>
+
+            <Style x:Key="DefaultButton" TargetType="Button">
+                <Setter Property="FontAttributes" Value="None" />
+                <Setter Property="TextColor" Value="#ffffff" />
+                <Setter Property="BackgroundColor" Value="#2d6ab5" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="Margin" Value="0, 0, 0, 0" />
+                <Setter Property="HeightRequest" Value="50" />
+            </Style>
+
+            <Style x:Key="DefaultButton2" TargetType="Button">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#ffffff" />
+                <Setter Property="BackgroundColor" Value="#216BC4" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="Margin" Value="0, 0, 0, 0" />
+                <Setter Property="HeightRequest" Value="50" />
+            </Style>
+
+            <Style x:Key="ButtonYes" TargetType="Button">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#ffffff" />
+                <Setter Property="BackgroundColor" Value="#1C9440" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="Margin" Value="0, 0, 0, 0" />
+                <Setter Property="HeightRequest" Value="50" />
+            </Style>
+
+            <Style x:Key="ButtonNo" TargetType="Button">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#ffffff" />
+                <Setter Property="BackgroundColor" Value="#CF212A" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="Margin" Value="0, 0, 0, 0" />
+                <Setter Property="HeightRequest" Value="50" />
+            </Style>
+
+            <Style x:Key="Default" TargetType="Label">
+                <Setter Property="FontSize" Value="Default" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="#252525" />
+                <Setter Property="Margin" Value="5, 5, 0, 0" />
+            </Style>
+
+
+
+            <Style x:Key="Default2" TargetType="Label">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="TextColor" Value="{StaticResource BLACK100}" />
+                <Setter Property="Margin" Value="5, 0, 0, 0" />
+            </Style>
+
+
+
+            <Style x:Key="Default3" TargetType="Label">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource BLACK100}" />
+                <Setter Property="Margin" Value="5, 5, 0, 0" />
+            </Style>
+
+            <Style x:Key="DefaultGRFile" TargetType="Label">
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="FontAttributes" Value="None" />
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalTextAlignment" Value="Start" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="TextColor" Value="{StaticResource BLACK100}" />
+                <Setter Property="Margin" Value="5, 0, 0, 0" />
+            </Style>
+
+            <Style x:Key="DefaultCard" TargetType="Label">
+                <Setter Property="FontSize" Value="Default" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource BLUE60}" />
+                <Setter Property="Margin" Value="5, 5, 0, 0" />
+            </Style>
+
+            <Style x:Key="DefaultCardBlack" TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource BLACK100}" />
+                <Setter Property="Margin" Value="5, 5, 0, 0" />
+            </Style>
+
+            <Style x:Key="Title" TargetType="Label">
+                <Setter Property="FontSize" Value="Title" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource BLACK100}" />
+                <Setter Property="Margin" Value="5, 5, 0, 0" />
+            </Style>
+
+            <Style x:Key="Subtitle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BLACK100}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="Subtitle" />
+                <Setter Property="Margin" Value="5, 5, 0, 0" />
+            </Style>
+
+            <Style x:Key="Small" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BLACK100}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="Margin" Value="5, 5, 0, 0" />
+            </Style>
+
+            <Style x:Key="Micro" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BLACK100}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="Margin" Value="5, 5, 0, 0" />
+            </Style>
+
+            <Style x:Key="CategoryStyle" TargetType="Image">
+                <Setter Property="Opacity" Value="0.75" />
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="Margin" Value="0, 0, 100, 0" />
+            </Style>
+
+            <Style x:Key="SwipeItemAction1BorderStyle" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource BLUE50}" />
+                <Setter Property="CornerRadius" Value="0, 10, 0, 10" />
+                <Setter Property="Margin" Value="0, 0, 0, 0" />
+            </Style>
+
+            <Style x:Key="SwipeItemAction1_2BorderStyle" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource YELL60}" />
+                <Setter Property="CornerRadius" Value="0, 0, 0, 0" />
+                <Setter Property="Margin" Value="0, 0, 0, 0" />
+            </Style>
+
+            <Style x:Key="SwipeItemActionConfirmBorderStyle" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource GREEN50}" />
+                <Setter Property="CornerRadius" Value="0, 10, 0, 10" />
+                <Setter Property="Margin" Value="0, 0, 0, 0" />
+            </Style>
+
+            <Style x:Key="SwipeItemActionCancelBorderStyle" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource RED50}" />
+                <Setter Property="CornerRadius" Value="0, 10, 0, 10" />
+                <Setter Property="Margin" Value="0, 0, 0, 0" />
+            </Style>
+
+            <Style x:Key="SwipeItemActionGRBorderStyle" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource GREEN80}" />
+                <Setter Property="CornerRadius" Value="0, 10, 0, 10" />
+                <Setter Property="Margin" Value="0, 0, 0, 0" />
+            </Style>
+
+
+            <Style x:Key="SwipeItemActionRePrintBorderStyle" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource YELL80}" />
+                <Setter Property="CornerRadius" Value="10, 0, 10, 0" />
+                <Setter Property="Margin" Value="0, 0, 0, 0" />
+            </Style>
+
+            <Style x:Key="SwipeItemAction2BorderStyle" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource RED50}" />
+                <Setter Property="CornerRadius" Value="0, 0, 0, 0" />
+                <Setter Property="Margin" Value="0, 0, 0, 0" />
+            </Style>
+
+            <Style x:Key="SwipeItemIconStyle" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="15" />
+            </Style>
+
+            <Style x:Key="SwipeItemTextStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource BLACK05}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0, 36, 0, 0" />
+            </Style>
+
+            <Style x:Key="DefaultLabel1" TargetType="Label">
+                <Setter Property="FontSize" Value="25" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="Margin" Value="10, 0, 0, 0" />
+            </Style>
+
+            <Style x:Key="DefaultLabel2" TargetType="Label">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontAttributes" Value="None" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="Margin" Value="0, 0, 0, 0" />
+            </Style>
+
+            <Style x:Key="SwipeRight" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="DodgerBlue" />
+                <Setter Property="CornerRadius" Value="0, 0, 0, 0" />
+                <Setter Property="Margin" Value="0, 0, 0, 0" />
+            </Style>
+            <Style x:Key="SwipeLeft" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="ForestGreen" />
+                <Setter Property="CornerRadius" Value="0, 0, 0, 0" />
+                <Setter Property="Margin" Value="0, 0, 0, 0" />
+            </Style>
+
+
+
+
+            <Color x:Key="Black (W3C)00">#000000</Color>
+            <Color x:Key="Night01">#0C090A</Color>
+            <Color x:Key="Charcoal02">#34282C</Color>
+            <Color x:Key="Oil03">#3B3131</Color>
+            <Color x:Key="Black Cat04">#413839</Color>
+            <Color x:Key="Iridium05">#3D3C3A</Color>
+            <Color x:Key="Black Eel06">#463E3F</Color>
+            <Color x:Key="Black Cow07">#4C4646</Color>
+            <Color x:Key="Gray Wolf08">#504A4B</Color>
+            <Color x:Key="Vampire Gray09">#565051</Color>
+            <Color x:Key="Gray Dolphin10">#5C5858</Color>
+            <Color x:Key="Carbon Gray11">#625D5D</Color>
+            <Color x:Key="Ash Gray12">#666362</Color>
+            <Color x:Key="Cloudy Gray13">#6D6968</Color>
+            <Color x:Key="DimGray or DimGrey (W3C)14">#696969</Color>
+            <Color x:Key="Smokey Gray15">#726E6D</Color>
+            <Color x:Key="Alien Gray16">#736F6E</Color>
+            <Color x:Key="Granite17">#837E7C</Color>
+            <Color x:Key="Sonic Silver18">#757575</Color>
+            <Color x:Key="Platinum Gray19">#797979</Color>
+            <Color x:Key="Gray or Grey (W3C)20">#808080</Color>
+            <Color x:Key="Battleship Gray21">#848482</Color>
+            <Color x:Key="DarkGray or DarkGrey (W3C)22">#A9A9A9</Color>
+            <Color x:Key="Gray Cloud23">#B6B6B4</Color>
+            <Color x:Key="Silver (W3C)24">#C0C0C0</Color>
+            <Color x:Key="Pale Silver25">#C9C0BB</Color>
+            <Color x:Key="Gray Goose26">#D1D0CE</Color>
+            <Color x:Key="Platinum Silver27">#CECECE</Color>
+            <Color x:Key="LightGray or LightGrey (W3C)28">#D3D3D3</Color>
+            <Color x:Key="Gainsboro (W3C)29">#DCDCDC</Color>
+            <Color x:Key="Platinum30">#E5E4E2</Color>
+            <Color x:Key="Metallic Silver31">#BCC6CC</Color>
+            <Color x:Key="Blue Gray32">#98AFC7</Color>
+            <Color x:Key="Roman Silver33">#838996</Color>
+            <Color x:Key="LightSlateGray or LightSlateGrey (W3C)34">#778899</Color>
+            <Color x:Key="SlateGray or SlateGrey (W3C)35">#708090</Color>
+            <Color x:Key="Rat Gray36">#6D7B8D</Color>
+            <Color x:Key="Slate Granite Gray37">#657383</Color>
+            <Color x:Key="Jet Gray38">#616D7E</Color>
+            <Color x:Key="Mist Blue39">#646D7E</Color>
+            <Color x:Key="Marble Blue40">#566D7E</Color>
+            <Color x:Key="Slate Blue Grey41">#737CA1</Color>
+            <Color x:Key="Light Purple Blue42">#728FCE</Color>
+            <Color x:Key="Azure Blue43">#4863A0</Color>
+            <Color x:Key="Blue Jay44">#2B547E</Color>
+            <Color x:Key="Dark Slate45">#2B3856</Color>
+            <Color x:Key="Purple Navy46">#4E5180</Color>
+            <Color x:Key="Night Blue47">#151B54</Color>
+            <Color x:Key="MidnightBlue (W3C)48">#191970</Color>
+            <Color x:Key="Navy (W3C)49">#000080</Color>
+            <Color x:Key="Denim Dark Blue50">#151B8D</Color>
+            <Color x:Key="DarkBlue (W3C)51">#00008B</Color>
+            <Color x:Key="Lapis Blue52">#15317E</Color>
+            <Color x:Key="New Midnight Blue53">#0000A0</Color>
+            <Color x:Key="Earth Blue54">#0000A5</Color>
+            <Color x:Key="Cobalt Blue55">#0020C2</Color>
+            <Color x:Key="MediumBlue (W3C)56">#0000CD</Color>
+            <Color x:Key="Blueberry Blue57">#0041C2</Color>
+            <Color x:Key="Canary Blue58">#2916F5</Color>
+            <Color x:Key="Blue (W3C)59">#0000FF</Color>
+            <Color x:Key="Blue Orchid60">#1F45FC</Color>
+            <Color x:Key="Sapphire Blue61">#2554C7</Color>
+            <Color x:Key="Blue Eyes62">#1569C7</Color>
+            <Color x:Key="Bright Navy Blue63">#1974D2</Color>
+            <Color x:Key="Balloon Blue64">#2B60DE</Color>
+            <Color x:Key="RoyalBlue (W3C)65">#4169E1</Color>
+            <Color x:Key="Ocean Blue66">#2B65EC</Color>
+            <Color x:Key="Blue Ribbon67">#306EFF</Color>
+            <Color x:Key="Blue Dress68">#157DEC</Color>
+            <Color x:Key="Neon Blue69">#1589FF</Color>
+            <Color x:Key="DodgerBlue (W3C)70">#1E90FF</Color>
+            <Color x:Key="Glacial Blue Ice71">#368BC1</Color>
+            <Color x:Key="SteelBlue (W3C)72">#4682B4</Color>
+            <Color x:Key="Silk Blue73">#488AC7</Color>
+            <Color x:Key="Windows Blue74">#357EC7</Color>
+            <Color x:Key="Blue Ivy75">#3090C7</Color>
+            <Color x:Key="Blue Koi76">#659EC7</Color>
+            <Color x:Key="Columbia Blue77">#87AFC7</Color>
+            <Color x:Key="Baby Blue78">#95B9C7</Color>
+            <Color x:Key="CornflowerBlue (W3C)79">#6495ED</Color>
+            <Color x:Key="Sky Blue Dress80">#6698FF</Color>
+            <Color x:Key="Iceberg81">#56A5EC</Color>
+            <Color x:Key="Butterfly Blue82">#38ACEC</Color>
+            <Color x:Key="DeepSkyBlue (W3C)83">#00BFFF</Color>
+            <Color x:Key="Midday Blue84">#3BB9FF</Color>
+            <Color x:Key="Crystal Blue85">#5CB3FF</Color>
+            <Color x:Key="Denim Blue86">#79BAEC</Color>
+            <Color x:Key="Day Sky Blue87">#82CAFF</Color>
+            <Color x:Key="LightSkyBlue (W3C)88">#87CEFA</Color>
+            <Color x:Key="SkyBlue (W3C)89">#87CEEB</Color>
+            <Color x:Key="Jeans Blue90">#A0CFEC</Color>
+            <Color x:Key="Blue Angel91">#B7CEEC</Color>
+            <Color x:Key="Pastel Blue92">#B4CFEC</Color>
+            <Color x:Key="Light Day Blue93">#ADDFFF</Color>
+            <Color x:Key="Sea Blue94">#C2DFFF</Color>
+            <Color x:Key="Heavenly Blue95">#C6DEFF</Color>
+            <Color x:Key="Robin Egg Blue96">#BDEDFF</Color>
+            <Color x:Key="PowderBlue (W3C)97">#B0E0E6</Color>
+            <Color x:Key="Coral Blue98">#AFDCEC</Color>
+            <Color x:Key="LightBlue (W3C)99">#ADD8E6</Color>
+            <Color x:Key="LightSteelBlue (W3C)100">#B0CFDE</Color>
+            <Color x:Key="Lavender Blue101">#E3E4FA</Color>
+            <Color x:Key="Lavender (W3C)102">#E6E6FA</Color>
+            <Color x:Key="Water103">#EBF4FA</Color>
+            <Color x:Key="AliceBlue (W3C)104">#F0F8FF</Color>
+            <Color x:Key="GhostWhite (W3C)105">#F8F8FF</Color>
+            <Color x:Key="Azure (W3C)106">#F0FFFF</Color>
+            <Color x:Key="LightCyan (W3C)107">#E0FFFF</Color>
+            <Color x:Key="Light Slate108">#CCFFFF</Color>
+            <Color x:Key="Electric Blue109">#9AFEFF</Color>
+            <Color x:Key="Tron Blue110">#7DFDFE</Color>
+            <Color x:Key="Blue Zircon111">#57FEFF</Color>
+            <Color x:Key="Aqua or Cyan (W3C)112">#00FFFF</Color>
+            <Color x:Key="Bright Cyan113">#0AFFFF</Color>
+            <Color x:Key="Celeste114">#50EBEC</Color>
+            <Color x:Key="Blue Diamond115">#4EE2EC</Color>
+            <Color x:Key="Bright Turquoise116">#16E2F5</Color>
+            <Color x:Key="Blue Lagoon117">#8EEBEC</Color>
+            <Color x:Key="PaleTurquoise (W3C)118">#AFEEEE</Color>
+            <Color x:Key="Pale Blue Lily119">#CFECEC</Color>
+            <Color x:Key="Tiffany Blue120">#81D8D0</Color>
+            <Color x:Key="Blue Hosta121">#77BFC7</Color>
+            <Color x:Key="Cyan Opaque122">#92C7C7</Color>
+            <Color x:Key="Northern Lights Blue123">#78C7C7</Color>
+            <Color x:Key="Blue Green124">#7BCCB5</Color>
+            <Color x:Key="MediumAquaMarine (W3C)125">#66CDAA</Color>
+            <Color x:Key="Aquamarine (W3C)126">#7FFFD4</Color>
+            <Color x:Key="Light Aquamarine127">#93FFE8</Color>
+            <Color x:Key="Turquoise (W3C)128">#40E0D0</Color>
+            <Color x:Key="MediumTurquoise (W3C)129">#48D1CC</Color>
+            <Color x:Key="Deep Turquoise130">#48CCCD</Color>
+            <Color x:Key="Jellyfish131">#46C7C7</Color>
+            <Color x:Key="Blue Turquoise132">#43C6DB</Color>
+            <Color x:Key="DarkTurquoise (W3C)133">#00CED1</Color>
+            <Color x:Key="Macaw Blue Green134">#43BFC7</Color>
+            <Color x:Key="LightSeaGreen (W3C)135">#20B2AA</Color>
+            <Color x:Key="Seafoam Green136">#3EA99F</Color>
+            <Color x:Key="CadetBlue (W3C)137">#5F9EA0</Color>
+            <Color x:Key="Deep Sea138">#3B9C9C</Color>
+            <Color x:Key="DarkCyan (W3C)139">#008B8B</Color>
+            <Color x:Key="Teal (W3C)140">#008080</Color>
+            <Color x:Key="Medium Teal141">#045F5F</Color>
+            <Color x:Key="Deep Teal142">#033E3E</Color>
+            <Color x:Key="DarkSlateGray or DarkSlateGrey (W3C)143">#25383C</Color>
+            <Color x:Key="Gunmetal144">#2C3539</Color>
+            <Color x:Key="Blue Moss Green145">#3C565B</Color>
+            <Color x:Key="Beetle Green146">#4C787E</Color>
+            <Color x:Key="Grayish Turquoise147">#5E7D7E</Color>
+            <Color x:Key="Greenish Blue148">#307D7E</Color>
+            <Color x:Key="Aquamarine Stone149">#348781</Color>
+            <Color x:Key="Sea Turtle Green150">#438D80</Color>
+            <Color x:Key="Dull Sea Green151">#4E8975</Color>
+            <Color x:Key="Deep Sea Green152">#306754</Color>
+            <Color x:Key="SeaGreen (W3C)153">#2E8B57</Color>
+            <Color x:Key="Earth Green154">#34A56F</Color>
+            <Color x:Key="Emerald155">#50C878</Color>
+            <Color x:Key="Mint156">#3EB489</Color>
+            <Color x:Key="MediumSeaGreen (W3C)157">#3CB371</Color>
+            <Color x:Key="Camouflage Green158">#78866B</Color>
+            <Color x:Key="Sage Green159">#848B79</Color>
+            <Color x:Key="Hazel Green160">#617C58</Color>
+            <Color x:Key="Venom Green161">#728C00</Color>
+            <Color x:Key="OliveDrab (W3C)162">#6B8E23</Color>
+            <Color x:Key="Olive (W3C)163">#808000</Color>
+            <Color x:Key="DarkOliveGreen (W3C)164">#556B2F</Color>
+            <Color x:Key="Fern Green165">#667C26</Color>
+            <Color x:Key="Fall Forest Green166">#4E9258</Color>
+            <Color x:Key="Pine Green167">#387C44</Color>
+            <Color x:Key="Medium Forest Green168">#347235</Color>
+            <Color x:Key="Jungle Green169">#347C2C</Color>
+            <Color x:Key="ForestGreen (W3C)170">#228B22</Color>
+            <Color x:Key="Green (W3C)171">#008000</Color>
+            <Color x:Key="DarkGreen (W3C)172">#006400</Color>
+            <Color x:Key="Deep Emerald Green173">#046307</Color>
+            <Color x:Key="Dark Forest Green174">#254117</Color>
+            <Color x:Key="Seaweed Green175">#437C17</Color>
+            <Color x:Key="Shamrock Green176">#347C17</Color>
+            <Color x:Key="Green Onion177">#6AA121</Color>
+            <Color x:Key="Green Pepper178">#4AA02C</Color>
+            <Color x:Key="Dark Lime Green179">#41A317</Color>
+            <Color x:Key="Clover Green180">#3EA055</Color>
+            <Color x:Key="Dinosaur Green181">#73A16C</Color>
+            <Color x:Key="Green Snake182">#6CBB3C</Color>
+            <Color x:Key="Alien Green183">#6CC417</Color>
+            <Color x:Key="Green Apple184">#4CC417</Color>
+            <Color x:Key="LimeGreen (W3C)185">#32CD32</Color>
+            <Color x:Key="Pea Green186">#52D017</Color>
+            <Color x:Key="Kelly Green187">#4CC552</Color>
+            <Color x:Key="Zombie Green188">#54C571</Color>
+            <Color x:Key="Frog Green189">#99C68E</Color>
+            <Color x:Key="DarkSeaGreen (W3C)190">#8FBC8F</Color>
+            <Color x:Key="Green Peas191">#89C35C</Color>
+            <Color x:Key="Dollar Bill Green192">#85BB65</Color>
+            <Color x:Key="Iguana Green193">#9CB071</Color>
+            <Color x:Key="Acid Green194">#B0BF1A</Color>
+            <Color x:Key="Avocado Green195">#B2C248</Color>
+            <Color x:Key="Pistachio Green196">#9DC209</Color>
+            <Color x:Key="Salad Green197">#A1C935</Color>
+            <Color x:Key="YellowGreen (W3C)198">#9ACD32</Color>
+            <Color x:Key="Hummingbird Green199">#7FE817</Color>
+            <Color x:Key="Nebula Green200">#59E817</Color>
+            <Color x:Key="Stoplight Go Green201">#57E964</Color>
+            <Color x:Key="Neon Green202">#16F529</Color>
+            <Color x:Key="Jade Green203">#5EFB6E</Color>
+            <Color x:Key="Lime Mint Green204">#36F57F</Color>
+            <Color x:Key="SpringGreen (W3C)205">#00FF7F</Color>
+            <Color x:Key="MediumSpringGreen (W3C)206">#00FA9A</Color>
+            <Color x:Key="Emerald Green207">#5FFB17</Color>
+            <Color x:Key="LawnGreen (W3C)208">#7CFC00</Color>
+            <Color x:Key="Lime (W3C)209">#00FF00</Color>
+            <Color x:Key="Chartreuse (W3C)210">#7FFF00</Color>
+            <Color x:Key="Yellow Lawn Green211">#87F717</Color>
+            <Color x:Key="Chameleon Green212">#BDF516</Color>
+            <Color x:Key="Dull Green Yellow213">#B1FB17</Color>
+            <Color x:Key="GreenYellow (W3C)214">#ADFF2F</Color>
+            <Color x:Key="Yellow Green Grosbeak215">#E2F516</Color>
+            <Color x:Key="Tea Green216">#CCFB5D</Color>
+            <Color x:Key="Slime Green217">#BCE954</Color>
+            <Color x:Key="Algae Green218">#64E986</Color>
+            <Color x:Key="LightGreen (W3C)219">#90EE90</Color>
+            <Color x:Key="Dragon Green220">#6AFB92</Color>
+            <Color x:Key="PaleGreen (W3C)221">#98FB98</Color>
+            <Color x:Key="Mint Green222">#98FF98</Color>
+            <Color x:Key="Green Thumb223">#B5EAAA</Color>
+            <Color x:Key="Organic Brown224">#E3F9A6</Color>
+            <Color x:Key="Light Jade225">#C3FDB8</Color>
+            <Color x:Key="Light Rose Green226">#DBF9DB</Color>
+            <Color x:Key="HoneyDew (W3C)227">#F0FFF0</Color>
+            <Color x:Key="MintCream (W3C)228">#F5FFFA</Color>
+            <Color x:Key="LemonChiffon (W3C)229">#FFFACD</Color>
+            <Color x:Key="Parchment230">#FFFFC2</Color>
+            <Color x:Key="Cream231">#FFFFCC</Color>
+            <Color x:Key="LightGoldenRodYellow (W3C)232">#FAFAD2</Color>
+            <Color x:Key="LightYellow (W3C)233">#FFFFE0</Color>
+            <Color x:Key="Beige (W3C)234">#F5F5DC</Color>
+            <Color x:Key="Cornsilk (W3C)235">#FFF8DC</Color>
+            <Color x:Key="Blonde236">#FBF6D9</Color>
+            <Color x:Key="Champagne237">#F7E7CE</Color>
+            <Color x:Key="AntiqueWhite (W3C)238">#FAEBD7</Color>
+            <Color x:Key="PapayaWhip (W3C)239">#FFEFD5</Color>
+            <Color x:Key="BlanchedAlmond (W3C)240">#FFEBCD</Color>
+            <Color x:Key="Bisque (W3C)241">#FFE4C4</Color>
+            <Color x:Key="Wheat (W3C)242">#F5DEB3</Color>
+            <Color x:Key="Moccasin (W3C)243">#FFE4B5</Color>
+            <Color x:Key="Peach244">#FFE5B4</Color>
+            <Color x:Key="PeachPuff (W3C)245">#FFDAB9</Color>
+            <Color x:Key="NavajoWhite (W3C)246">#FFDEAD</Color>
+            <Color x:Key="Vanilla247">#F3E5AB</Color>
+            <Color x:Key="Tan Brown248">#ECE5B6</Color>
+            <Color x:Key="PaleGoldenRod (W3C)249">#EEE8AA</Color>
+            <Color x:Key="Khaki (W3C)250">#F0E68C</Color>
+            <Color x:Key="Cardboard Brown251">#EDDA74</Color>
+            <Color x:Key="Harvest Gold252">#EDE275</Color>
+            <Color x:Key="Sun Yellow253">#FFE87C</Color>
+            <Color x:Key="Corn Yellow254">#FFF380</Color>
+            <Color x:Key="Yellow (W3C)255">#FFFF00</Color>
+            <Color x:Key="Canary Yellow256">#FFEF00</Color>
+            <Color x:Key="Banana Yellow257">#F5E216</Color>
+            <Color x:Key="Mustard258">#FFDB58</Color>
+            <Color x:Key="Rubber Ducky Yellow259">#FFD801</Color>
+            <Color x:Key="Gold (W3C)260">#FFD700</Color>
+            <Color x:Key="Bright Gold261">#FDD017</Color>
+            <Color x:Key="Golden Brown262">#EAC117</Color>
+            <Color x:Key="Macaroni and Cheese263">#F2BB66</Color>
+            <Color x:Key="Saffron264">#FBB917</Color>
+            <Color x:Key="Orange (W3C)265">#FFA500</Color>
+            <Color x:Key="Beer266">#FBB117</Color>
+            <Color x:Key="Cantaloupe267">#FFA62F</Color>
+            <Color x:Key="Brown Sand268">#EE9A4D</Color>
+            <Color x:Key="SandyBrown (W3C)269">#F4A460</Color>
+            <Color x:Key="Brown Sugar270">#E2A76F</Color>
+            <Color x:Key="Camel Brown271">#C19A6B</Color>
+            <Color x:Key="Deer Brown272">#E6BF83</Color>
+            <Color x:Key="BurlyWood (W3C)273">#DEB887</Color>
+            <Color x:Key="Tan (W3C)274">#D2B48C</Color>
+            <Color x:Key="Light French Beige275">#C8AD7F</Color>
+            <Color x:Key="Sand276">#C2B280</Color>
+            <Color x:Key="Sage277">#BCB88A</Color>
+            <Color x:Key="Fall Leaf Brown278">#C8B560</Color>
+            <Color x:Key="Ginger Brown279">#C9BE62</Color>
+            <Color x:Key="DarkKhaki (W3C)280">#BDB76B</Color>
+            <Color x:Key="Olive Green281">#BAB86C</Color>
+            <Color x:Key="Brass282">#B5A642</Color>
+            <Color x:Key="Cookie Brown283">#C7A317</Color>
+            <Color x:Key="Metallic Gold284">#D4AF37</Color>
+            <Color x:Key="Bee Yellow285">#E9AB17</Color>
+            <Color x:Key="School Bus Yellow286">#E8A317</Color>
+            <Color x:Key="GoldenRod (W3C)287">#DAA520</Color>
+            <Color x:Key="Orange Gold288">#D4A017</Color>
+            <Color x:Key="Caramel289">#C68E17</Color>
+            <Color x:Key="DarkGoldenRod (W3C)290">#B8860B</Color>
+            <Color x:Key="Cinnamon291">#C58917</Color>
+            <Color x:Key="Peru (W3C)292">#CD853F</Color>
+            <Color x:Key="Bronze293">#CD7F32</Color>
+            <Color x:Key="Tiger Orange294">#C88141</Color>
+            <Color x:Key="Copper295">#B87333</Color>
+            <Color x:Key="Wood296">#966F33</Color>
+            <Color x:Key="Oak Brown297">#806517</Color>
+            <Color x:Key="Antique Bronze298">#665D1E</Color>
+            <Color x:Key="Dark Moccasin299">#827839</Color>
+            <Color x:Key="Bullet Shell300">#AF9B60</Color>
+            <Color x:Key="Army Brown301">#827B60</Color>
+            <Color x:Key="Sandstone302">#786D5F</Color>
+            <Color x:Key="Taupe303">#483C32</Color>
+            <Color x:Key="Mocha304">#493D26</Color>
+            <Color x:Key="Milk Chocolate305">#513B1C</Color>
+            <Color x:Key="Dark Coffee306">#3B2F2F</Color>
+            <Color x:Key="Old Burgundy307">#43302E</Color>
+            <Color x:Key="Coffee308">#6F4E37</Color>
+            <Color x:Key="Brown Bear309">#835C3B</Color>
+            <Color x:Key="Red Dirt310">#7F5217</Color>
+            <Color x:Key="Sepia311">#7F462C</Color>
+            <Color x:Key="Sienna (W3C)312">#A0522D</Color>
+            <Color x:Key="SaddleBrown (W3C)313">#8B4513</Color>
+            <Color x:Key="Dark Sienna314">#8A4117</Color>
+            <Color x:Key="Sangria315">#7E3817</Color>
+            <Color x:Key="Blood Red316">#7E3517</Color>
+            <Color x:Key="Chestnut317">#954535</Color>
+            <Color x:Key="Chestnut Red318">#C34A2C</Color>
+            <Color x:Key="Mahogany319">#C04000</Color>
+            <Color x:Key="Red Fox320">#C35817</Color>
+            <Color x:Key="Dark Bisque321">#B86500</Color>
+            <Color x:Key="Rust322">#C36241</Color>
+            <Color x:Key="Copper Red323">#CB6D51</Color>
+            <Color x:Key="Orange Salmon324">#C47451</Color>
+            <Color x:Key="Chocolate (W3C)325">#D2691E</Color>
+            <Color x:Key="Sedona326">#CC6600</Color>
+            <Color x:Key="Papaya Orange327">#E56717</Color>
+            <Color x:Key="Halloween Orange328">#E66C2C</Color>
+            <Color x:Key="Pumpkin Orange329">#F87217</Color>
+            <Color x:Key="Carrot Orange330">#F88017</Color>
+            <Color x:Key="DarkOrange (W3C)331">#FF8C00</Color>
+            <Color x:Key="Construction Cone Orange332">#F87431</Color>
+            <Color x:Key="Sunrise Orange333">#E67451</Color>
+            <Color x:Key="Mango Orange334">#FF8040</Color>
+            <Color x:Key="Coral (W3C)335">#FF7F50</Color>
+            <Color x:Key="Basket Ball Orange336">#F88158</Color>
+            <Color x:Key="Light Salmon Rose337">#F9966B</Color>
+            <Color x:Key="LightSalmon (W3C)338">#FFA07A</Color>
+            <Color x:Key="DarkSalmon (W3C)339">#E9967A</Color>
+            <Color x:Key="Tangerine340">#E78A61</Color>
+            <Color x:Key="Light Copper341">#DA8A67</Color>
+            <Color x:Key="Salmon (W3C)342">#FA8072</Color>
+            <Color x:Key="LightCoral (W3C)343">#F08080</Color>
+            <Color x:Key="Pink Coral344">#E77471</Color>
+            <Color x:Key="Bean Red345">#F75D59</Color>
+            <Color x:Key="Valentine Red346">#E55451</Color>
+            <Color x:Key="IndianRed (W3C)347">#CD5C5C</Color>
+            <Color x:Key="Tomato (W3C)348">#FF6347</Color>
+            <Color x:Key="Shocking Orange349">#E55B3C</Color>
+            <Color x:Key="OrangeRed (W3C)350">#FF4500</Color>
+            <Color x:Key="Red (W3C)351">#FF0000</Color>
+            <Color x:Key="Scarlet352">#FF2400</Color>
+            <Color x:Key="Ruby Red353">#F62217</Color>
+            <Color x:Key="Ferrari Red354">#F70D1A</Color>
+            <Color x:Key="Fire Engine Red355">#F62817</Color>
+            <Color x:Key="Lava Red356">#E42217</Color>
+            <Color x:Key="Love Red357">#E41B17</Color>
+            <Color x:Key="Grapefruit358">#DC381F</Color>
+            <Color x:Key="Cherry Red359">#C24641</Color>
+            <Color x:Key="Chilli Pepper360">#C11B17</Color>
+            <Color x:Key="FireBrick (W3C)361">#B22222</Color>
+            <Color x:Key="Brown (W3C)362">#A52A2A</Color>
+            <Color x:Key="Cranberry363">#9F000F</Color>
+            <Color x:Key="Red Wine364">#990012</Color>
+            <Color x:Key="DarkRed (W3C)365">#8B0000</Color>
+            <Color x:Key="Maroon (W3C)366">#800000</Color>
+            <Color x:Key="Burgundy367">#8C001A</Color>
+            <Color x:Key="Deep Red368">#800517</Color>
+            <Color x:Key="Red Blood369">#660000</Color>
+            <Color x:Key="Blood Night370">#551606</Color>
+            <Color x:Key="Black Bean371">#3D0C02</Color>
+            <Color x:Key="Chocolate Brown372">#3F000F</Color>
+            <Color x:Key="Midnight373">#2B1B17</Color>
+            <Color x:Key="Purple Lily374">#550A35</Color>
+            <Color x:Key="Purple Maroon375">#810541</Color>
+            <Color x:Key="Plum Pie376">#7D0541</Color>
+            <Color x:Key="Plum Velvet377">#7D0552</Color>
+            <Color x:Key="Velvet Maroon378">#7E354D</Color>
+            <Color x:Key="Rosy Finch379">#7F4E52</Color>
+            <Color x:Key="Dull Purple380">#7F525D</Color>
+            <Color x:Key="Puce381">#7F5A58</Color>
+            <Color x:Key="Rose Dust382">#997070</Color>
+            <Color x:Key="Rosy Pink383">#B38481</Color>
+            <Color x:Key="RosyBrown (W3C)384">#BC8F8F</Color>
+            <Color x:Key="Khaki Rose385">#C5908E</Color>
+            <Color x:Key="Pink Brown386">#C48189</Color>
+            <Color x:Key="Lipstick Pink387">#C48793</Color>
+            <Color x:Key="Rose388">#E8ADAA</Color>
+            <Color x:Key="Silver Pink389">#C4AEAD</Color>
+            <Color x:Key="Rose Gold390">#ECC5C0</Color>
+            <Color x:Key="Deep Peach391">#FFCBA4</Color>
+            <Color x:Key="Desert Sand392">#EDC9AF</Color>
+            <Color x:Key="Pig Pink393">#FDD7E4</Color>
+            <Color x:Key="Pink Bubble Gum394">#FFDFDD</Color>
+            <Color x:Key="MistyRose (W3C)395">#FFE4E1</Color>
+            <Color x:Key="Light Rose396">#FBCFCD</Color>
+            <Color x:Key="Deep Rose397">#FBBBB9</Color>
+            <Color x:Key="Pink (W3C)398">#FFC0CB</Color>
+            <Color x:Key="LightPink (W3C)399">#FFB6C1</Color>
+            <Color x:Key="Donut Pink400">#FAAFBE</Color>
+            <Color x:Key="Baby Pink401">#FAAFBA</Color>
+            <Color x:Key="Flamingo Pink402">#F9A7B0</Color>
+            <Color x:Key="Pink Rose403">#E7A1B0</Color>
+            <Color x:Key="Pink Daisy404">#E799A3</Color>
+            <Color x:Key="Cadillac Pink405">#E38AAE</Color>
+            <Color x:Key="Carnation Pink406">#F778A1</Color>
+            <Color x:Key="Blush Red407">#E56E94</Color>
+            <Color x:Key="PaleVioletRed (W3C)408">#DB7093</Color>
+            <Color x:Key="Purple Pink409">#D16587</Color>
+            <Color x:Key="Tulip Pink410">#C25A7C</Color>
+            <Color x:Key="Bashful Pink411">#C25283</Color>
+            <Color x:Key="Dark Hot Pink412">#F660AB</Color>
+            <Color x:Key="HotPink (W3C)413">#FF69B4</Color>
+            <Color x:Key="Watermelon Pink414">#FC6C85</Color>
+            <Color x:Key="Violet Red415">#F6358A</Color>
+            <Color x:Key="Hot Deep Pink416">#F52887</Color>
+            <Color x:Key="DeepPink (W3C)417">#FF1493</Color>
+            <Color x:Key="Neon Pink418">#F535AA</Color>
+            <Color x:Key="Pink Cupcake419">#E45E9D</Color>
+            <Color x:Key="Dimorphotheca Magenta420">#E3319D</Color>
+            <Color x:Key="Pink Lemonade421">#E4287C</Color>
+            <Color x:Key="Crimson (W3C)422">#DC143C</Color>
+            <Color x:Key="Bright Maroon423">#C32148</Color>
+            <Color x:Key="Rogue Pink424">#C12869</Color>
+            <Color x:Key="Burnt Pink425">#C12267</Color>
+            <Color x:Key="Pink Violet426">#CA226B</Color>
+            <Color x:Key="MediumVioletRed (W3C)427">#C71585</Color>
+            <Color x:Key="Dark Carnation Pink428">#C12283</Color>
+            <Color x:Key="Pink Plum429">#B93B8F</Color>
+            <Color x:Key="Orchid (W3C)430">#DA70D6</Color>
+            <Color x:Key="Deep Mauve431">#DF73D4</Color>
+            <Color x:Key="Violet (W3C)432">#EE82EE</Color>
+            <Color x:Key="Bright Neon Pink433">#F433FF</Color>
+            <Color x:Key="Fuchsia or Magenta (W3C)434">#FF00FF</Color>
+            <Color x:Key="Crimson Purple435">#E238EC</Color>
+            <Color x:Key="Heliotrope Purple436">#D462FF</Color>
+            <Color x:Key="Tyrian Purple437">#C45AEC</Color>
+            <Color x:Key="MediumOrchid (W3C)438">#BA55D3</Color>
+            <Color x:Key="Purple Flower439">#A74AC7</Color>
+            <Color x:Key="Orchid Purple440">#B048B5</Color>
+            <Color x:Key="Mauve Taupe441">#915F6D</Color>
+            <Color x:Key="Viola Purple442">#7E587E</Color>
+            <Color x:Key="Eggplant443">#614051</Color>
+            <Color x:Key="Plum Purple444">#583759</Color>
+            <Color x:Key="Grape445">#5E5A80</Color>
+            <Color x:Key="SlateBlue (W3C)446">#6A5ACD</Color>
+            <Color x:Key="Blue Lotus447">#6960EC</Color>
+            <Color x:Key="Light Slate Blue448">#736AFF</Color>
+            <Color x:Key="MediumSlateBlue (W3C)449">#7B68EE</Color>
+            <Color x:Key="Purple Amethyst450">#6C2DC7</Color>
+            <Color x:Key="DarkSlateBlue (W3C)451">#483D8B</Color>
+            <Color x:Key="Purple Haze452">#4E387E</Color>
+            <Color x:Key="Purple Iris453">#571B7E</Color>
+            <Color x:Key="Indigo (W3C)454">#4B0082</Color>
+            <Color x:Key="Blue Whale455">#342D7E</Color>
+            <Color x:Key="Purple Monster456">#461B7E</Color>
+            <Color x:Key="RebeccaPurple (W3C)457">#663399</Color>
+            <Color x:Key="Purple Jam458">#6A287E</Color>
+            <Color x:Key="DarkMagenta (W3C)459">#8B008B</Color>
+            <Color x:Key="Purple (W3C)460">#800080</Color>
+            <Color x:Key="French Lilac461">#86608E</Color>
+            <Color x:Key="DarkOrchid (W3C)462">#9932CC</Color>
+            <Color x:Key="DarkViolet (W3C)463">#9400D3</Color>
+            <Color x:Key="Purple Violet464">#8D38C9</Color>
+            <Color x:Key="Jasmine Purple465">#A23BEC</Color>
+            <Color x:Key="Purple Daffodil466">#B041FF</Color>
+            <Color x:Key="Clemantis Violet467">#842DCE</Color>
+            <Color x:Key="BlueViolet (W3C)468">#8A2BE2</Color>
+            <Color x:Key="Purple Sage Bush469">#7A5DC7</Color>
+            <Color x:Key="Lovely Purple470">#7F38EC</Color>
+            <Color x:Key="Purple Plum471">#8E35EF</Color>
+            <Color x:Key="Aztech Purple472">#893BFF</Color>
+            <Color x:Key="MediumPurple (W3C)473">#9370DB</Color>
+            <Color x:Key="Light Purple474">#8467D7</Color>
+            <Color x:Key="Crocus Purple475">#9172EC</Color>
+            <Color x:Key="Purple Mimosa476">#9E7BFF</Color>
+            <Color x:Key="Pale Lilac477">#DCD0FF</Color>
+            <Color x:Key="Mauve478">#E0B0FF</Color>
+            <Color x:Key="Bright Lilac479">#D891EF</Color>
+            <Color x:Key="Rich Lilac480">#B666D2</Color>
+            <Color x:Key="Purple Dragon481">#C38EC7</Color>
+            <Color x:Key="Lilac482">#C8A2C8</Color>
+            <Color x:Key="Plum (W3C)483">#DDA0DD</Color>
+            <Color x:Key="Blush Pink484">#E6A9EC</Color>
+            <Color x:Key="Blossom Pink485">#F9B7FF</Color>
+            <Color x:Key="Wisteria Purple486">#C6AEC7</Color>
+            <Color x:Key="Purple Thistle487">#D2B9D3</Color>
+            <Color x:Key="Thistle (W3C)488">#D8BFD8</Color>
+            <Color x:Key="Periwinkle489">#E9CFEC</Color>
+            <Color x:Key="Cotton Candy490">#FCDFFF</Color>
+            <Color x:Key="Lavender Pinocchio491">#EBDDE2</Color>
+            <Color x:Key="White Chocolate492">#EDE6D6</Color>
+            <Color x:Key="Soft Ivory493">#FAF0DD</Color>
+            <Color x:Key="LavenderBlush (W3C)494">#FFF0F5</Color>
+            <Color x:Key="Pearl495">#FDEEF4</Color>
+            <Color x:Key="Egg Shell496">#FFF9E3</Color>
+            <Color x:Key="OldLace (W3C)497">#FDF5E6</Color>
+            <Color x:Key="Linen (W3C)498">#FAF0E6</Color>
+            <Color x:Key="SeaShell (W3C)499">#FFF5EE</Color>
+            <Color x:Key="Rice500">#FAF5EF</Color>
+            <Color x:Key="FloralWhite (W3C)501">#FFFAF0</Color>
+            <Color x:Key="Ivory (W3C)502">#FFFFF0</Color>
+            <Color x:Key="WhiteSmoke (W3C)503">#F5F5F5</Color>
+            <Color x:Key="Cotton504">#FBFBF9</Color>
+            <Color x:Key="Snow (W3C)505">#FFFAFA</Color>
+            <Color x:Key="Milk White506">#FEFCFF</Color>
+            <Color x:Key="White (W3C)507">#FFFFFF</Color>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

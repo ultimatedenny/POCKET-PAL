@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="POCKETPAL.Controls.InitialsViewControl"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ContentView.Content>
+        <Grid>
+            <Frame
+                x:Name="FrameView"
+                Padding="0"
+                BackgroundColor="Transparent"
+                HasShadow="False">
+                <BoxView
+                    x:Name="ContentBoxView"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    BackgroundColor="#B5E0F2"/>
+            </Frame>
+            <Label
+                x:Name="ContentLabel"
+                FontSize="Default"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+        </Grid>
+    </ContentView.Content>
+
+</ContentView>

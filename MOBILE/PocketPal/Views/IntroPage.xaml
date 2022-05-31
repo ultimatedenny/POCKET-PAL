@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="POCKETPAL.Views.IntroPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:vm="clr-namespace:POCKETPAL.Models"
+    xmlns:xfpinview="clr-namespace:XFPINView;assembly=XFPINView"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid>
+        <Image Aspect="AspectFill" Source="ic_bg" VerticalOptions="End" />
+        <StackLayout
+            Margin="20,40,20,20"
+            Spacing="15"
+            VerticalOptions="CenterAndExpand">
+
+            <Label
+                x:Name="txtName"
+                Margin="0,0,0,0"
+                FontAttributes="Bold"
+                FontSize="30"
+                HorizontalTextAlignment="Center"
+                Text="Welcome, Deni Andrean"
+                TextColor="#403E45" />
+
+            <Button
+                x:Name="btnLogin"
+                Style="{StaticResource DefaultButton}"
+                Text="SIGN IN" />
+
+        </StackLayout>
+    </Grid>
+
+</ContentPage>

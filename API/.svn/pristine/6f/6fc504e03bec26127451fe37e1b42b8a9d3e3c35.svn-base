@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBEPModelStoreContainer" CdmEntityContainer="DBVISITORMSEntities">
+    <EntitySetMapping Name="EPDetails">
+      <EntityTypeMapping TypeName="DBEPModel.EPDetail">
+        <MappingFragment StoreEntitySet="EPDetails">
+          <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="UseID" ColumnName="UseID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EPMasters">
+      <EntityTypeMapping TypeName="DBEPModel.EPMaster">
+        <MappingFragment StoreEntitySet="EPMaster">
+          <ScalarProperty Name="MasterId" ColumnName="MasterId" />
+          <ScalarProperty Name="SENo" ColumnName="SENo" />
+          <ScalarProperty Name="EPNo" ColumnName="EPNo" />
+          <ScalarProperty Name="UseDep" ColumnName="UseDep" />
+          <ScalarProperty Name="PlantID" ColumnName="PlantID" />
+          <ScalarProperty Name="Destination" ColumnName="Destination" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Out" ColumnName="Out" />
+          <ScalarProperty Name="In" ColumnName="In" />
+          <ScalarProperty Name="CompTrans" ColumnName="CompTrans" />
+          <ScalarProperty Name="CompTransTime" ColumnName="CompTransTime" />
+          <ScalarProperty Name="ActOut" ColumnName="ActOut" />
+          <ScalarProperty Name="ActIn" ColumnName="ActIn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ExpireTicket" ColumnName="ExpireTicket" />
+          <ScalarProperty Name="Approver" ColumnName="Approver" />
+          <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

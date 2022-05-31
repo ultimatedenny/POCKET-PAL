@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBEPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="EPDetail">
+    <Key>
+      <PropertyRef Name="DetailId" />
+    </Key>
+    <Property Name="DetailId" Type="Guid" Nullable="false" />
+    <Property Name="MasterId" Type="Guid" Nullable="false" />
+    <Property Name="UseID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="EPMaster" Relationship="Self.FK_EPDetails_OrderMaster" FromRole="EPDetails" ToRole="EPMaster" />
+  </EntityType>
+  <EntityType Name="EPMaster">
+    <Key>
+      <PropertyRef Name="MasterId" />
+    </Key>
+    <Property Name="MasterId" Type="Guid" Nullable="false" />
+    <Property Name="SENo" Type="Int32" Nullable="false" />
+    <Property Name="EPNo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UseDep" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PlantID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Destination" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Out" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="In" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="CompTrans" Type="Boolean" Nullable="false" />
+    <Property Name="CompTransTime" Type="Time" Precision="7" />
+    <Property Name="ActOut" Type="Time" Precision="7" />
+    <Property Name="ActIn" Type="Time" Precision="7" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ExpireTicket" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Approver" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+    <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EPDetails" Relationship="Self.FK_EPDetails_OrderMaster" FromRole="EPMaster" ToRole="EPDetails" />
+  </EntityType>
+  <Association Name="FK_EPDetails_OrderMaster">
+    <End Role="EPMaster" Type="Self.EPMaster" Multiplicity="1" />
+    <End Role="EPDetails" Type="Self.EPDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EPMaster">
+        <PropertyRef Name="MasterId" />
+      </Principal>
+      <Dependent Role="EPDetails">
+        <PropertyRef Name="MasterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBVISITORMSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EPDetails" EntityType="Self.EPDetail" />
+    <EntitySet Name="EPMasters" EntityType="Self.EPMaster" />
+    <AssociationSet Name="FK_EPDetails_OrderMaster" Association="Self.FK_EPDetails_OrderMaster">
+      <End Role="EPMaster" EntitySet="EPMasters" />
+      <End Role="EPDetails" EntitySet="EPDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

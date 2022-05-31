@@ -1,0 +1,59 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Web;
+using System.Web.Configuration;
+using System.Web.Mvc;
+using POCKETPAL_API.Actions;
+using POCKETPAL_API.Class;
+using POCKETPAL_API.Models;
+
+
+namespace POCKETPAL_API.Controllers
+{
+    public class ErecruitmentController : Controller
+    {
+        ErecruitmentAction Erecruitment = new ErecruitmentAction();
+        public ActionResult Index()
+        {
+            string Id = "Erecruitment Controller";
+            string APIName = WebConfigurationManager.AppSettings["APIName"];
+            string APIVersion = WebConfigurationManager.AppSettings["APIVersion"];
+            string Final = APIName + " - " + APIVersion + " [" + Id + "]";
+            return Json(Final, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetBatchList(string status, string BatchComp)
+        {
+            return Json(Erecruitment.GetBatchList(status, BatchComp), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetBatchStatus(string x)
+        {
+            return Json(Erecruitment.GetBatchStatus(x), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetBatchInformation(string BatchComp)
+        {
+            return Json(Erecruitment.GetBatchInformation(BatchComp), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetCandidateList(string BatchComp)
+        {
+            return Json(Erecruitment.GetCandidateList(BatchComp), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetEmpListBatch(string BatchComp, string NameEmp)
+        {
+            return Json(Erecruitment.GetEmpListBatch(BatchComp, NameEmp), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetEmpListBatchQR(string BatchEmp)
+        {
+            return Json(Erecruitment.GetEmpListBatchQR(BatchEmp), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult UpdateBatch(string Status, string Batch, string UseId)
+        {
+            return Json(Erecruitment.UpdateBatch(Status, Batch, UseId), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult UpdateEmployee(string Status, string BatchEmp, string UseId)
+        {
+            return Json(Erecruitment.UpdateEmployee(Status, BatchEmp, UseId), JsonRequestBehavior.AllowGet);
+        }
+    }
+}

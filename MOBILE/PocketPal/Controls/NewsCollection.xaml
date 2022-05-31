@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="POCKETPAL.Controls.NewsCollection"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
+    mc:Ignorable="d">
+
+    <ContentView.Content>
+
+        <cv:CarouselViewControl
+            x:Name="cvBanners"
+            AnimateTransition="True"
+            CurrentPageIndicatorTintColor="DodgerBlue"
+            HeightRequest="270"
+            HorizontalOptions="FillAndExpand"
+            IndicatorsShape="Circle"
+            IndicatorsTintColor="LightGray"
+            InterPageSpacing="0"
+            ItemsSource="{Binding News}"
+            Orientation="Horizontal"
+            ShowIndicators="true"
+            VerticalOptions="StartAndExpand">
+
+            <cv:CarouselViewControl.ItemTemplate>
+                <DataTemplate>
+                    <yummy:PancakeView
+                        CornerRadius="10"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Label
+                                Margin="30,20,0,0"
+                                FontSize="12"
+                                Text="{Binding Header}"
+                                TextColor="DarkGray" />
+                            
+                            <Image
+                                Aspect="Fill"
+                                HorizontalOptions="FillAndExpand"
+                                Source="{Binding FeaturedImage}" />
+                            <StackLayout
+                                Margin="30,5,0,0"
+                                HorizontalOptions="FillAndExpand"
+                                Spacing="15"
+                                VerticalOptions="Center">
+                                <flex:FlexButton
+                                        Grid.Row="0"
+                                        BackgroundColor="#D3DDE3"
+                                        CornerRadius="5"
+                                        FontSize="10"
+                                        ForegroundColor="#1991DE"
+                                        HeightRequest="20"
+                                        HighlightBackgroundColor="#8EA4D2"
+                                        HighlightForegroundColor="#87a8d0"
+                                        HorizontalOptions="Start"
+                                        Text="NEWS"
+                                        VerticalOptions="Center" />
+                                <BoxView
+                                    BackgroundColor="White"
+                                    HeightRequest="1"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Start"
+                                    WidthRequest="10" />
+                                <StackLayout>
+                                    <Label
+                                        FontSize="25"
+                                        FontAttributes="Italic"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="3"
+                                        Margin="0,0,100,0"
+                                        Text="{Binding BodyTEXT}"
+                                        TextColor="#434343">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Tittle_Tapped" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <Label
+                                        FontSize="12"
+                                        Text="{Binding CreatedBy}"
+                                        TextColor="DarkGray" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Grid>
+                    </yummy:PancakeView>
+                </DataTemplate>
+            </cv:CarouselViewControl.ItemTemplate>
+
+        </cv:CarouselViewControl>
+
+    </ContentView.Content>
+</ContentView>

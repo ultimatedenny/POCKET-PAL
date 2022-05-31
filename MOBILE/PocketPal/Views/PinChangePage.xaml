@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="POCKETPAL.Views.PinChangePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:xfpinview="clr-namespace:XFPINView;assembly=XFPINView"
+    Title="Change PIN"
+    ios:Page.UseSafeArea="true"
+    BackgroundColor="{StaticResource AppBackgroundColor}"
+    NavigationPage.HasNavigationBar="True"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="True">
+
+    <Grid>
+        <Image Aspect="AspectFill" Source="IMG_BACKGROUOND" />
+        <StackLayout Margin="20,40,20,20" Spacing="15">
+            <Label
+                x:Name="txtPIN"
+                Margin="0,40,0,0"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"
+                Text="Please enter your PIN"
+                TextColor="#616161" />
+
+            <xfpinview:PINView
+                x:Name="Pin1"
+                AutoDismissKeyboard="True"
+                BoxBackgroundColor="#99A1B3"
+                BoxBorderColor="#99A1B3"
+                BoxFocusAnimation="ZoomInOut"
+                BoxFocusColor="#99A1B3"
+                BoxShape="RoundCorner"
+                PINEntryCompleted="Complete"
+                PINLength="4"
+                Color="#616161" />
+
+        </StackLayout>
+    </Grid>
+
+</ContentPage>
